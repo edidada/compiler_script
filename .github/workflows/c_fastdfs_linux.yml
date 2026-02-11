@@ -27,5 +27,7 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: |
         sudo apt update
+        git clone https://x-access-token:${{secrets.COMPILER_PAT}}@github.com/edidada/github_codespaces_compile.git 
+        cd github_codespaces_compile
         chmod +x ./c/fastdfs/linux/get_fastdfs.sh
         ./c/fastdfs/linux/get_fastdfs.sh
