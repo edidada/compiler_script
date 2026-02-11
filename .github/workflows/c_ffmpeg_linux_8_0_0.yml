@@ -27,5 +27,7 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: |
         sudo apt update
+        git clone https://x-access-token:${{secrets.COMPILER_PAT}}@github.com/edidada/github_codespaces_compile.git 
+        cd github_codespaces_compile
         chmod +x ./c/ffmpeg/linux/8_0_0/get_ffmpeg8.sh
         ./c/ffmpeg/linux/8_0_0/get_ffmpeg8.sh
