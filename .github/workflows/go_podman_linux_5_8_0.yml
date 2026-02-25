@@ -31,5 +31,6 @@ jobs:
           sudo apt update
           git clone https://x-access-token:${{secrets.COMPILER_PAT}}@github.com/edidada/github_codespaces_compile.git
           cd github_codespaces_compile
+          git checkout -b go/podman/linux/5_8_0 origin/go/podman/linux/5_8_0
           chmod +x ./go/podman/5_8_0/linux/get_podman_linux_5_8_0.sh
           ./go/podman/5_8_0/linux/get_podman_linux_5_8_0.sh
