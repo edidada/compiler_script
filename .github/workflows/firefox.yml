@@ -31,5 +31,5 @@ jobs:
         git clone https://x-access-token:${{secrets.COMPILER_PAT}}@github.com/edidada/github_codespaces_compile.git
         cd github_codespaces_compile
         git checkout firefox
-        chmod +x ./firefox/linux/get_firefox.sh
-        ./firefox/linux/get_firefox.sh
+        chmod +x ./cpp/firefox/linux/get_firefox.sh
+        ./cpp/firefox/linux/get_firefox.sh
