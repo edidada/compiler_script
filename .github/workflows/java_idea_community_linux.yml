@@ -30,5 +30,8 @@ jobs:
         # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
         run: |
           sudo apt update
+          git clone https://x-access-token:${{secrets.COMPILER_PAT}}@github.com/edidada/github_codespaces_compile.git
+          cd github_codespaces_compile
+          git checkout -b java/idea_community/linux origin/java/idea_community/linux
           chmod +x ./java/idea_community/linux/java_idea_community_linux.sh
           ./java/idea_community/linux/java_idea_community_linux.sh
