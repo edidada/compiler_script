@@ -33,4 +33,4 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: |
         chmod +x ./java/sootup/linux/1_3_0/get_sootup.sh
-        ./java/sootup/linux/1_3_0/get_libpcap.sh
+        ./java/sootup/linux/1_3_0/get_sootup.sh
