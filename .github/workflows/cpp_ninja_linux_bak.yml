@@ -21,6 +21,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
+      with:
+        repository: edidada/github_codespaces_compile
+        ref: ${{ github.ref_name }}
+        token: ${{ secrets.COMPILER_PAT }}
+        clean: false
 
     - name: get_ninja
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
