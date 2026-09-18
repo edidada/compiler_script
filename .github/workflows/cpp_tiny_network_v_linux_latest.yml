@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/tiny_network/linux/get_tiny_network.sh'
-          './cpp/tiny_network/linux/get_tiny_network.sh'
+          chmod +x -- 'cpp/tiny_network_v/linux/latest/get_tiny_network.sh'
+          './cpp/tiny_network_v/linux/latest/get_tiny_network.sh'
