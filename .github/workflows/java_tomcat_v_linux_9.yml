@@ -28,7 +28,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/tomcat/linux/get_tomcat.sh'
-          './java/tomcat/linux/get_tomcat.sh'
-          chmod +x -- 'java/tomcat/linux/get_tomcat9.sh'
-          './java/tomcat/linux/get_tomcat9.sh'
+          chmod +x -- 'java/tomcat_v/linux/9/get_tomcat.sh'
+          './java/tomcat_v/linux/9/get_tomcat.sh'
+          chmod +x -- 'java/tomcat_v/linux/9/get_tomcat9.sh'
+          './java/tomcat_v/linux/9/get_tomcat9.sh'
