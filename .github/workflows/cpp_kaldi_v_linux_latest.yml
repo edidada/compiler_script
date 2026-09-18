@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/kaldi/linux/get_kaldi.sh'
-          './cpp/kaldi/linux/get_kaldi.sh'
+          chmod +x -- 'cpp/kaldi_v/linux/latest/get_kaldi.sh'
+          './cpp/kaldi_v/linux/latest/get_kaldi.sh'
