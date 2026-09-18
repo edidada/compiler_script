@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/shardingsphere/linux/get_shardingsphere.sh'
-          './java/shardingsphere/linux/get_shardingsphere.sh'
+          chmod +x -- 'java/shardingsphere_v/linux/latest/get_shardingsphere.sh'
+          './java/shardingsphere_v/linux/latest/get_shardingsphere.sh'
