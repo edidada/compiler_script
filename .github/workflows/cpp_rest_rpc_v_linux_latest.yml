@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/rest_rpc/linux/get_rest_rpc.sh'
-          './cpp/rest_rpc/linux/get_rest_rpc.sh'
+          chmod +x -- 'cpp/rest_rpc_v/linux/latest/get_rest_rpc.sh'
+          './cpp/rest_rpc_v/linux/latest/get_rest_rpc.sh'
