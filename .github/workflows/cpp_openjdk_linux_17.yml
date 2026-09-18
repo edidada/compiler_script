@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/openjdk17/linux/build_openjdk17.sh'
-          './cpp/openjdk17/linux/build_openjdk17.sh'
+          chmod +x -- 'cpp/openjdk/linux/17/build_openjdk17.sh'
+          './cpp/openjdk/linux/17/build_openjdk17.sh'
