@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'go/vmvcc/linux/get_vmvcc.sh'
-          './go/vmvcc/linux/get_vmvcc.sh'
+          chmod +x -- 'go/vmvcc_v/linux/latest/get_vmvcc.sh'
+          './go/vmvcc_v/linux/latest/get_vmvcc.sh'
