@@ -1,0 +1,32 @@
+name: build ts/opencode/linux/1_2_27
+
+on:
+  push:
+    branches:
+      - 'ts/opencode/linux/1_2_27'
+  pull_request:
+    branches:
+      - 'ts/opencode/linux/1_2_27'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'ts/opencode/linux/1_2_27/get_opencode_1_2_27.sh'
+          './ts/opencode/linux/1_2_27/get_opencode_1_2_27.sh'
