@@ -1,0 +1,32 @@
+name: build go/minio/linux/2025_09_07
+
+on:
+  push:
+    branches:
+      - 'go/minio/linux/2025_09_07'
+  pull_request:
+    branches:
+      - 'go/minio/linux/2025_09_07'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'go/minio/linux/get_minio_2025_09_07.sh'
+          './go/minio/linux/get_minio_2025_09_07.sh'
