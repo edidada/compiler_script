@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/mybatis3/linux/get_mybatis3.sh'
-          './java/mybatis3/linux/get_mybatis3.sh'
+          chmod +x -- 'java/mybatis3_v/linux/latest/get_mybatis3.sh'
+          './java/mybatis3_v/linux/latest/get_mybatis3.sh'
