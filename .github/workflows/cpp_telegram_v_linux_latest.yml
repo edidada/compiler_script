@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/telegram/get_telegram_linux.sh'
-          './cpp/telegram/get_telegram_linux.sh'
+          chmod +x -- 'cpp/telegram_v/linux/latest/get_telegram_linux.sh'
+          './cpp/telegram_v/linux/latest/get_telegram_linux.sh'
