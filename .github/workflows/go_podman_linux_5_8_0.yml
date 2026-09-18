@@ -1,4 +1,4 @@
-name: build Podman 5.8.0
+name: build go/podman/linux/5_8_0
 
 on:
   push:
@@ -8,8 +8,6 @@ on:
     branches:
       - 'go/podman/linux/5_8_0'
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 28 * *'
 
 permissions:
   contents: read
@@ -19,17 +17,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone matching private source branch
-        shell: bash
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
-        run: |
-          set -euo pipefail
-          gh repo clone sandisks/github_codespaces_compile private-source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
-
-      - name: Execute source script
         shell: bash
         run: |
           set -euo pipefail
-          test -f 'private-source/go/podman/5_8_0/linux/get_podman_linux_5_8_0.sh'
-          chmod +x 'private-source/go/podman/5_8_0/linux/get_podman_linux_5_8_0.sh'
-          'private-source/go/podman/5_8_0/linux/get_podman_linux_5_8_0.sh'
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'go/podman/linux/5_8_0/get_podman_linux_5_8_0.sh'
+          './go/podman/linux/5_8_0/get_podman_linux_5_8_0.sh'
