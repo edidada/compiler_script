@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/dubbo/linux/get_dubbo.sh'
-          './java/dubbo/linux/get_dubbo.sh'
+          chmod +x -- 'java/dubbo_v/linux/latest/get_dubbo.sh'
+          './java/dubbo_v/linux/latest/get_dubbo.sh'
