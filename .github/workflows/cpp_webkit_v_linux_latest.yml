@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/webkit/linux/get_webkit.sh'
-          './cpp/webkit/linux/get_webkit.sh'
+          chmod +x -- 'cpp/webkit_v/linux/latest/get_webkit.sh'
+          './cpp/webkit_v/linux/latest/get_webkit.sh'
