@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/jackson/linux/get_jackson.sh'
-          './java/jackson/linux/get_jackson.sh'
+          chmod +x -- 'java/jackson_v/linux/latest/get_jackson.sh'
+          './java/jackson_v/linux/latest/get_jackson.sh'
