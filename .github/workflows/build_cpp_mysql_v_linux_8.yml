@@ -1,0 +1,32 @@
+name: build cpp/mysql_v/linux/8
+
+on:
+  push:
+    branches:
+      - 'cpp/mysql_v/linux/8'
+  pull_request:
+    branches:
+      - 'cpp/mysql_v/linux/8'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'cpp/mysql8/linux/get_mysql8.sh'
+          './cpp/mysql8/linux/get_mysql8.sh'
