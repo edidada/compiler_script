@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'python/selenium/linux/get_selenium.sh'
-          './python/selenium/linux/get_selenium.sh'
+          chmod +x -- 'python/selenium_v/linux/latest/get_selenium.sh'
+          './python/selenium_v/linux/latest/get_selenium.sh'
