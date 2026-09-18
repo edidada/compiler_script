@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/charon/get_charon.sh'
-          './cpp/charon/get_charon.sh'
+          chmod +x -- 'cpp/charon_v/linux/latest/get_charon.sh'
+          './cpp/charon_v/linux/latest/get_charon.sh'
