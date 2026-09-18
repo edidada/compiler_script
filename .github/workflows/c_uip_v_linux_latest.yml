@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_uip.sh'
-          './get_uip.sh'
+          chmod +x -- 'c/uip_v/linux/latest/get_uip.sh'
+          './c/uip_v/linux/latest/get_uip.sh'
