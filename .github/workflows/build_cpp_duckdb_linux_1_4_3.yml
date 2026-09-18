@@ -1,0 +1,32 @@
+name: build cpp/duckdb/linux/1_4_3
+
+on:
+  push:
+    branches:
+      - 'cpp/duckdb/linux/1_4_3'
+  pull_request:
+    branches:
+      - 'cpp/duckdb/linux/1_4_3'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'cpp/duckdb/linux/1_4_3/get_duckdb.sh'
+          './cpp/duckdb/linux/1_4_3/get_duckdb.sh'
