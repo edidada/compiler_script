@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'csharp/garnet/linux/get_garnet.sh'
-          './csharp/garnet/linux/get_garnet.sh'
+          chmod +x -- 'csharp/garnet_v/linux/latest/get_garnet.sh'
+          './csharp/garnet_v/linux/latest/get_garnet.sh'
