@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/stringtemplate4/linux/get_java_stringtemplate4_linux.sh'
-          './java/stringtemplate4/linux/get_java_stringtemplate4_linux.sh'
+          chmod +x -- 'java/stringtemplate_v/linux/4/get_java_stringtemplate4_linux.sh'
+          './java/stringtemplate_v/linux/4/get_java_stringtemplate4_linux.sh'
