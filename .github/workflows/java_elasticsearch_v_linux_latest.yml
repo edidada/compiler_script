@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/elasticsearch/linux/get_elasticsearch.sh'
-          './java/elasticsearch/linux/get_elasticsearch.sh'
+          chmod +x -- 'java/elasticsearch_v/linux/latest/get_elasticsearch.sh'
+          './java/elasticsearch_v/linux/latest/get_elasticsearch.sh'
