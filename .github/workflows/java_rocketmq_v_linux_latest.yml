@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/rocketmq/linux/get_rocketmq.sh'
-          './java/rocketmq/linux/get_rocketmq.sh'
+          chmod +x -- 'java/rocketmq_v/linux/latest/get_rocketmq.sh'
+          './java/rocketmq_v/linux/latest/get_rocketmq.sh'
