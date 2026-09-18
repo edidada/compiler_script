@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/antlr/linux/get_java_antlr_linux.sh'
-          './java/antlr/linux/get_java_antlr_linux.sh'
+          chmod +x -- 'java/antlr_v/linux/latest/get_java_antlr_linux.sh'
+          './java/antlr_v/linux/latest/get_java_antlr_linux.sh'
