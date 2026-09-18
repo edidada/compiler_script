@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_minigit.sh'
-          './get_minigit.sh'
+          chmod +x -- 'c/minigit_v/linux/latest/get_minigit.sh'
+          './c/minigit_v/linux/latest/get_minigit.sh'
