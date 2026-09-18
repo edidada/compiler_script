@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/squid/get_squid_linux.sh'
-          './cpp/squid/get_squid_linux.sh'
+          chmod +x -- 'cpp/squid_v/linux/latest/get_squid_linux.sh'
+          './cpp/squid_v/linux/latest/get_squid_linux.sh'
