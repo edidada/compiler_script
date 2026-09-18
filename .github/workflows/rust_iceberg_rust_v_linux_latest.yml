@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'rust/iceberg_rust/linux/get_iceberg_rust_linux.sh'
-          './rust/iceberg_rust/linux/get_iceberg_rust_linux.sh'
+          chmod +x -- 'rust/iceberg_rust_v/linux/latest/get_iceberg_rust_linux.sh'
+          './rust/iceberg_rust_v/linux/latest/get_iceberg_rust_linux.sh'
