@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/langchain4j/linux/get_java_langchain4j_linux.sh'
-          './java/langchain4j/linux/get_java_langchain4j_linux.sh'
+          chmod +x -- 'java/langchain4j_v/linux/latest/get_java_langchain4j_linux.sh'
+          './java/langchain4j_v/linux/latest/get_java_langchain4j_linux.sh'
