@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/liburing/linux/get_liburing_linux.sh'
-          './cpp/liburing/linux/get_liburing_linux.sh'
+          chmod +x -- 'cpp/liburing_v/linux/latest/get_liburing_linux.sh'
+          './cpp/liburing_v/linux/latest/get_liburing_linux.sh'
