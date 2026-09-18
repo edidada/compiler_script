@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/llvm/get_llvm.sh'
-          './cpp/llvm/get_llvm.sh'
+          chmod +x -- 'cpp/llvm_v/linux/latest/get_llvm.sh'
+          './cpp/llvm_v/linux/latest/get_llvm.sh'
