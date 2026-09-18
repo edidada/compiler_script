@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/iceberg/linux/get_iceberg.sh'
-          './java/iceberg/linux/get_iceberg.sh'
+          chmod +x -- 'java/iceberg_v/linux/latest/get_iceberg.sh'
+          './java/iceberg_v/linux/latest/get_iceberg.sh'
