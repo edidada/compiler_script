@@ -1,4 +1,4 @@
-name: build Patroni 4.0.0
+name: build python/patroni/linux/4_0_0
 
 on:
   push:
@@ -8,8 +8,6 @@ on:
     branches:
       - 'python/patroni/linux/4_0_0'
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 28 * *'
 
 permissions:
   contents: read
@@ -19,17 +17,16 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Clone matching private source branch
-        shell: bash
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
-        run: |
-          set -euo pipefail
-          gh repo clone sandisks/github_codespaces_compile private-source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
-
-      - name: Execute source script
         shell: bash
         run: |
           set -euo pipefail
-          test -f 'private-source/python/patroni/4_0_0/linux/get_patroni_4_0_0.sh'
-          chmod +x 'private-source/python/patroni/4_0_0/linux/get_patroni_4_0_0.sh'
-          'private-source/python/patroni/4_0_0/linux/get_patroni_4_0_0.sh'
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'python/patroni/linux/4_0_0/get_patroni_4_0_0.sh'
+          './python/patroni/linux/4_0_0/get_patroni_4_0_0.sh'
