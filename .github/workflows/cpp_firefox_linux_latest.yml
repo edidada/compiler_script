@@ -1,4 +1,4 @@
-name: build Firefox latest
+name: build cpp/firefox/linux/latest
 
 on:
   push:
@@ -17,17 +17,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone matching private source branch
-        shell: bash
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
-        run: |
-          set -euo pipefail
-          gh repo clone sandisks/github_codespaces_compile private-source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
-
-      - name: Execute source script
         shell: bash
         run: |
           set -euo pipefail
-          test -f 'private-source/cpp/firefox/linux/get_firefox.sh'
-          chmod +x 'private-source/cpp/firefox/linux/get_firefox.sh'
-          'private-source/cpp/firefox/linux/get_firefox.sh'
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'cpp/firefox/linux/latest/get_firefox.sh'
+          './cpp/firefox/linux/latest/get_firefox.sh'
