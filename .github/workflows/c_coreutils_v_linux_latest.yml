@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_coreutils.sh'
-          './get_coreutils.sh'
+          chmod +x -- 'c/coreutils_v/linux/latest/get_coreutils.sh'
+          './c/coreutils_v/linux/latest/get_coreutils.sh'
