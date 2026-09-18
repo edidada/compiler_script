@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_tbox.sh'
-          './get_tbox.sh'
+          chmod +x -- 'c/tbox_v/linux/latest/get_tbox.sh'
+          './c/tbox_v/linux/latest/get_tbox.sh'
