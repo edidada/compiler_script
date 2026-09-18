@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'go/tinysql/linux/get_tinysql_linux.sh'
-          './go/tinysql/linux/get_tinysql_linux.sh'
+          chmod +x -- 'go/tinysql_v/linux/latest/get_tinysql_linux.sh'
+          './go/tinysql_v/linux/latest/get_tinysql_linux.sh'
