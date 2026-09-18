@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'python/pytorch/linux/get_python_pytorch_linux.sh'
-          './python/pytorch/linux/get_python_pytorch_linux.sh'
+          chmod +x -- 'python/pytorch_v/linux/latest/get_python_pytorch_linux.sh'
+          './python/pytorch_v/linux/latest/get_python_pytorch_linux.sh'
