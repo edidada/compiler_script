@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/get_odb.sh'
-          './cpp/get_odb.sh'
+          chmod +x -- 'cpp/odb_v/linux/latest/get_odb.sh'
+          './cpp/odb_v/linux/latest/get_odb.sh'
