@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/asio/get_asio.sh'
-          './cpp/asio/get_asio.sh'
+          chmod +x -- 'cpp/asio_v/linux/latest/get_asio.sh'
+          './cpp/asio_v/linux/latest/get_asio.sh'
