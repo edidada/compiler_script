@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/muduo/linux/get_muduo.sh'
-          './cpp/muduo/linux/get_muduo.sh'
+          chmod +x -- 'cpp/muduo_v/linux/latest/get_muduo.sh'
+          './cpp/muduo_v/linux/latest/get_muduo.sh'
