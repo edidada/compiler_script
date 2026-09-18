@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/libfilezilla/get_libfilezilla_linux.sh'
-          './cpp/libfilezilla/get_libfilezilla_linux.sh'
+          chmod +x -- 'cpp/libfilezilla_v/linux/latest/get_libfilezilla_linux.sh'
+          './cpp/libfilezilla_v/linux/latest/get_libfilezilla_linux.sh'
