@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'c/get_redis_v5.sh'
-          './c/get_redis_v5.sh'
+          chmod +x -- 'c/redis_v/linux/5/get_redis_v5.sh'
+          './c/redis_v/linux/5/get_redis_v5.sh'
