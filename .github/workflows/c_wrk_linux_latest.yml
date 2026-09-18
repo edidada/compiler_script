@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'c/linux/get_wrk.sh'
-          './c/linux/get_wrk.sh'
+          chmod +x -- 'c/wrk/linux/latest/get_wrk.sh'
+          './c/wrk/linux/latest/get_wrk.sh'
