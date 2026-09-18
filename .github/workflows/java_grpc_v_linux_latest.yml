@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/grpc/linux/get_java_grpc.sh'
-          './java/grpc/linux/get_java_grpc.sh'
+          chmod +x -- 'java/grpc_v/linux/latest/get_java_grpc.sh'
+          './java/grpc_v/linux/latest/get_java_grpc.sh'
