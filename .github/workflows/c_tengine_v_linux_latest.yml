@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_tengine.sh'
-          './get_tengine.sh'
+          chmod +x -- 'c/tengine_v/linux/latest/get_tengine.sh'
+          './c/tengine_v/linux/latest/get_tengine.sh'
