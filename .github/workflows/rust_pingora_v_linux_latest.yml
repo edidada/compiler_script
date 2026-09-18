@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'rust/pingora/linux/get_pingora_linux.sh'
-          './rust/pingora/linux/get_pingora_linux.sh'
+          chmod +x -- 'rust/pingora_v/linux/latest/get_pingora_linux.sh'
+          './rust/pingora_v/linux/latest/get_pingora_linux.sh'
