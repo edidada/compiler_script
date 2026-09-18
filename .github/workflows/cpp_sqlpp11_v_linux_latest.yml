@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/sqlpp11/linux/get_sqlpp11_linux.sh'
-          './cpp/sqlpp11/linux/get_sqlpp11_linux.sh'
+          chmod +x -- 'cpp/sqlpp11_v/linux/latest/get_sqlpp11_linux.sh'
+          './cpp/sqlpp11_v/linux/latest/get_sqlpp11_linux.sh'
