@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/hikaricp/linux/get_hikaricp.sh'
-          './java/hikaricp/linux/get_hikaricp.sh'
+          chmod +x -- 'java/hikaricp_v/linux/latest/get_hikaricp.sh'
+          './java/hikaricp_v/linux/latest/get_hikaricp.sh'
