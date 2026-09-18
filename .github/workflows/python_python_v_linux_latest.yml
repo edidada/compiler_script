@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'python/python/get_python.sh'
-          './python/python/get_python.sh'
+          chmod +x -- 'python/python_v/linux/latest/get_python.sh'
+          './python/python_v/linux/latest/get_python.sh'
