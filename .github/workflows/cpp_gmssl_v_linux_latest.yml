@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/gmssl/linux/get_gmssl_linux.sh'
-          './cpp/gmssl/linux/get_gmssl_linux.sh'
+          chmod +x -- 'cpp/gmssl_v/linux/latest/get_gmssl_linux.sh'
+          './cpp/gmssl_v/linux/latest/get_gmssl_linux.sh'
