@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_valkey.sh'
-          './get_valkey.sh'
+          chmod +x -- 'c/valkey_v/linux/latest/get_valkey.sh'
+          './c/valkey_v/linux/latest/get_valkey.sh'
