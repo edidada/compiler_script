@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/handy/macos/get_handy_macos.sh'
-          './cpp/handy/macos/get_handy_macos.sh'
+          chmod +x -- 'cpp/handy_v/macos/latest/get_handy_macos.sh'
+          './cpp/handy_v/macos/latest/get_handy_macos.sh'
