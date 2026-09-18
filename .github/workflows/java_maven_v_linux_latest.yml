@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/maven/linux/mvn_start.sh'
-          './java/maven/linux/mvn_start.sh'
+          chmod +x -- 'java/maven_v/linux/latest/mvn_start.sh'
+          './java/maven_v/linux/latest/mvn_start.sh'
