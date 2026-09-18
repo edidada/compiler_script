@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/quarkus/linux/get_quarkus.sh'
-          './java/quarkus/linux/get_quarkus.sh'
+          chmod +x -- 'java/quarkus_v/linux/latest/get_quarkus.sh'
+          './java/quarkus_v/linux/latest/get_quarkus.sh'
