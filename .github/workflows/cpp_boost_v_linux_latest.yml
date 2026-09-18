@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/boost/get_boost.sh'
-          './cpp/boost/get_boost.sh'
+          chmod +x -- 'cpp/boost_v/linux/latest/get_boost.sh'
+          './cpp/boost_v/linux/latest/get_boost.sh'
