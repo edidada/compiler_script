@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_kafka.sh'
-          './get_kafka.sh'
+          chmod +x -- 'scala/kafka_v/linux/latest/get_kafka.sh'
+          './scala/kafka_v/linux/latest/get_kafka.sh'
