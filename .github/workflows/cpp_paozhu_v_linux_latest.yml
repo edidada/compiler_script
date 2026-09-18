@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/paozhu/linux/get_paozhu_linux.sh'
-          './cpp/paozhu/linux/get_paozhu_linux.sh'
+          chmod +x -- 'cpp/paozhu_v/linux/latest/get_paozhu_linux.sh'
+          './cpp/paozhu_v/linux/latest/get_paozhu_linux.sh'
