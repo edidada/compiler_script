@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'go/moby/linux/get_moby.sh'
-          './go/moby/linux/get_moby.sh'
+          chmod +x -- 'go/moby_v/linux/latest/get_moby.sh'
+          './go/moby_v/linux/latest/get_moby.sh'
