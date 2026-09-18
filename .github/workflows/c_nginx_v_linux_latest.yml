@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_nginx.sh'
-          './get_nginx.sh'
+          chmod +x -- 'c/nginx_v/linux/latest/get_nginx.sh'
+          './c/nginx_v/linux/latest/get_nginx.sh'
