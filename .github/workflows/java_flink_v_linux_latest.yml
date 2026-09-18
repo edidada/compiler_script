@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/flink/linux/get_flink.sh'
-          './java/flink/linux/get_flink.sh'
+          chmod +x -- 'java/flink_v/linux/latest/get_flink.sh'
+          './java/flink_v/linux/latest/get_flink.sh'
