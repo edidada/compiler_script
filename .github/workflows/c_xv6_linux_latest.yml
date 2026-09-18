@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_xv6.sh'
-          './get_xv6.sh'
+          chmod +x -- 'c/xv6/linux/latest/get_xv6.sh'
+          './c/xv6/linux/latest/get_xv6.sh'
