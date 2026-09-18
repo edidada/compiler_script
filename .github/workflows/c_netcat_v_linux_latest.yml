@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_netcat.sh'
-          './get_netcat.sh'
+          chmod +x -- 'c/netcat_v/linux/latest/get_netcat.sh'
+          './c/netcat_v/linux/latest/get_netcat.sh'
