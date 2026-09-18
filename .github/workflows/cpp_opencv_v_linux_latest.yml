@@ -1,4 +1,4 @@
-name: build OpenCV latest
+name: build cpp/opencv_v/linux/latest
 
 on:
   push:
@@ -14,20 +14,19 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Clone matching private source branch
-        shell: bash
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
-        run: |
-          set -euo pipefail
-          gh repo clone sandisks/github_codespaces_compile private-source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
-
-      - name: Execute source script
         shell: bash
         run: |
           set -euo pipefail
-          test -f 'private-source/cpp/opencv/linux/get_opencv.sh'
-          chmod +x 'private-source/cpp/opencv/linux/get_opencv.sh'
-          'private-source/cpp/opencv/linux/get_opencv.sh'
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'cpp/opencv_v/linux/latest/get_opencv.sh'
+          './cpp/opencv_v/linux/latest/get_opencv.sh'
