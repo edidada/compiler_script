@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'rust/get_tikv.sh'
-          './rust/get_tikv.sh'
+          chmod +x -- 'rust/tikv_v/linux/latest/get_tikv.sh'
+          './rust/tikv_v/linux/latest/get_tikv.sh'
