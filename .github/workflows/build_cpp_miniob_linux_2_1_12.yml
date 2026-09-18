@@ -1,0 +1,32 @@
+name: build cpp/miniob/linux/2_1_12
+
+on:
+  push:
+    branches:
+      - 'cpp/miniob/linux/2_1_12'
+  pull_request:
+    branches:
+      - 'cpp/miniob/linux/2_1_12'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'cpp/miniob/linux/2_1_12/get_miniob_2_1_12.sh'
+          './cpp/miniob/linux/2_1_12/get_miniob_2_1_12.sh'
