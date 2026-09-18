@@ -1,4 +1,4 @@
-name: build LLVM 22.1.0
+name: build cpp/llvm_v/linux/22_1_0
 
 on:
   push:
@@ -17,17 +17,16 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Clone matching private source branch
-        shell: bash
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
-        run: |
-          set -euo pipefail
-          gh repo clone sandisks/github_codespaces_compile private-source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
-
-      - name: Execute source script
         shell: bash
         run: |
           set -euo pipefail
-          test -f 'private-source/cpp/llvm_v/22_1_0/linux/get_llvm_22_1_0_linux.sh'
-          chmod +x 'private-source/cpp/llvm_v/22_1_0/linux/get_llvm_22_1_0_linux.sh'
-          'private-source/cpp/llvm_v/22_1_0/linux/get_llvm_22_1_0_linux.sh'
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'cpp/llvm_v/linux/22_1_0/get_llvm_22_1_0_linux.sh'
+          './cpp/llvm_v/linux/22_1_0/get_llvm_22_1_0_linux.sh'
