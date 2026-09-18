@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/ceph/get_ceph.sh'
-          './cpp/ceph/get_ceph.sh'
+          chmod +x -- 'cpp/ceph_v/linux/latest/get_ceph.sh'
+          './cpp/ceph_v/linux/latest/get_ceph.sh'
