@@ -1,4 +1,4 @@
-name: build ffmpeg 8.0.0
+name: build c/ffmpeg_v/linux/8_0_0
 
 on:
   push:
@@ -17,17 +17,16 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Clone matching private source branch
-        shell: bash
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
-        run: |
-          set -euo pipefail
-          gh repo clone sandisks/github_codespaces_compile private-source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
-
-      - name: Execute source script
         shell: bash
         run: |
           set -euo pipefail
-          test -f 'private-source/c/ffmpeg/linux/8_0_0/get_ffmpeg8.sh'
-          chmod +x 'private-source/c/ffmpeg/linux/8_0_0/get_ffmpeg8.sh'
-          'private-source/c/ffmpeg/linux/8_0_0/get_ffmpeg8.sh'
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'c/ffmpeg_v/linux/8_0_0/get_ffmpeg8.sh'
+          './c/ffmpeg_v/linux/8_0_0/get_ffmpeg8.sh'
