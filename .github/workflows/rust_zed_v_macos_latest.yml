@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'rust/macos/zed_macos.sh'
-          './rust/macos/zed_macos.sh'
+          chmod +x -- 'rust/zed_v/macos/latest/zed_macos.sh'
+          './rust/zed_v/macos/latest/zed_macos.sh'
