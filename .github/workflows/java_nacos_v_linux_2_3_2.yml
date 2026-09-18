@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/get_nacos2_3_2.sh'
-          './java/get_nacos2_3_2.sh'
+          chmod +x -- 'java/nacos_v/linux/2_3_2/get_nacos2_3_2.sh'
+          './java/nacos_v/linux/2_3_2/get_nacos2_3_2.sh'
