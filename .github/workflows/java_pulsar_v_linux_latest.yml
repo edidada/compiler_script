@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/pulsar/linux/get_pulsar.sh'
-          './java/pulsar/linux/get_pulsar.sh'
+          chmod +x -- 'java/pulsar_v/linux/latest/get_pulsar.sh'
+          './java/pulsar_v/linux/latest/get_pulsar.sh'
