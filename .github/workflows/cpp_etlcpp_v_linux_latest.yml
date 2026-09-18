@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/etlcpp/linux/get_etlcpp_linux.sh'
-          './cpp/etlcpp/linux/get_etlcpp_linux.sh'
+          chmod +x -- 'cpp/etlcpp_v/linux/latest/get_etlcpp_linux.sh'
+          './cpp/etlcpp_v/linux/latest/get_etlcpp_linux.sh'
