@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_glibc.sh'
-          './get_glibc.sh'
+          chmod +x -- 'c/glibc_v/linux/latest/get_glibc.sh'
+          './c/glibc_v/linux/latest/get_glibc.sh'
