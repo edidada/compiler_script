@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'go/frp/linux/get_frp.sh'
-          './go/frp/linux/get_frp.sh'
+          chmod +x -- 'go/frp_v/linux/latest/get_frp.sh'
+          './go/frp_v/linux/latest/get_frp.sh'
