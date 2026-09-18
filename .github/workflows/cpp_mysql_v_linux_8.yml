@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/mysql8/linux/get_mysql8.sh'
-          './cpp/mysql8/linux/get_mysql8.sh'
+          chmod +x -- 'cpp/mysql_v/linux/8/get_mysql8.sh'
+          './cpp/mysql_v/linux/8/get_mysql8.sh'
