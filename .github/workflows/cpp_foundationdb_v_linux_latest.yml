@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/foundationdb/linux/get_foundationdb_linux.sh'
-          './cpp/foundationdb/linux/get_foundationdb_linux.sh'
+          chmod +x -- 'cpp/foundationdb_v/linux/latest/get_foundationdb_linux.sh'
+          './cpp/foundationdb_v/linux/latest/get_foundationdb_linux.sh'
