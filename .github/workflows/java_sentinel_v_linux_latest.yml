@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/sentinel/linux/get_sentinel.sh'
-          './java/sentinel/linux/get_sentinel.sh'
+          chmod +x -- 'java/sentinel_v/linux/latest/get_sentinel.sh'
+          './java/sentinel_v/linux/latest/get_sentinel.sh'
