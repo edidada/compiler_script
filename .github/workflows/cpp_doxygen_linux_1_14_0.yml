@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/doxygen/get_doxygen_1_14_0_linux.sh'
-          './cpp/doxygen/get_doxygen_1_14_0_linux.sh'
+          chmod +x -- 'cpp/doxygen/linux/1_14_0/get_doxygen_1_14_0_linux.sh'
+          './cpp/doxygen/linux/1_14_0/get_doxygen_1_14_0_linux.sh'
