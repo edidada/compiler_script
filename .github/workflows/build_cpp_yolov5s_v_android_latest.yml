@@ -1,0 +1,32 @@
+name: build cpp/yolov5s_v/android/latest
+
+on:
+  push:
+    branches:
+      - 'cpp/yolov5s_v/android/latest'
+  pull_request:
+    branches:
+      - 'cpp/yolov5s_v/android/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'cpp/yolov5s/android/get_yolov5s_android.sh'
+          './cpp/yolov5s/android/get_yolov5s_android.sh'
