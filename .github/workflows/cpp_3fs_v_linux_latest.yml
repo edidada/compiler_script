@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/3fs/linux/get_3fs_linux24.sh'
-          './cpp/3fs/linux/get_3fs_linux24.sh'
+          chmod +x -- 'cpp/3fs_v/linux/latest/get_3fs_linux24.sh'
+          './cpp/3fs_v/linux/latest/get_3fs_linux24.sh'
