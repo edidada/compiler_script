@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'rust/bustubx/linux/get_bustubx.sh'
-          './rust/bustubx/linux/get_bustubx.sh'
+          chmod +x -- 'rust/bustubx_v/linux/latest/get_bustubx.sh'
+          './rust/bustubx_v/linux/latest/get_bustubx.sh'
