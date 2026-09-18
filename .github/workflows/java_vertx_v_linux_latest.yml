@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/vertx/linux/get_vertx.sh'
-          './java/vertx/linux/get_vertx.sh'
+          chmod +x -- 'java/vertx_v/linux/latest/get_vertx.sh'
+          './java/vertx_v/linux/latest/get_vertx.sh'
