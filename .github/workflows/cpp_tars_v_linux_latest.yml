@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_tars.sh'
-          './get_tars.sh'
+          chmod +x -- 'cpp/tars_v/linux/latest/get_tars.sh'
+          './cpp/tars_v/linux/latest/get_tars.sh'
