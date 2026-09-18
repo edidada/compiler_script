@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/skia/linux/get_skia.sh'
-          './cpp/skia/linux/get_skia.sh'
+          chmod +x -- 'cpp/skia_v/linux/latest/get_skia.sh'
+          './cpp/skia_v/linux/latest/get_skia.sh'
