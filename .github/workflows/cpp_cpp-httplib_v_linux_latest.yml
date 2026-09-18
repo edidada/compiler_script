@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/cpp-httplib/linux/get_cpp_httplib_linux.sh'
-          './cpp/cpp-httplib/linux/get_cpp_httplib_linux.sh'
+          chmod +x -- 'cpp/cpp-httplib_v/linux/latest/get_cpp_httplib_linux.sh'
+          './cpp/cpp-httplib_v/linux/latest/get_cpp_httplib_linux.sh'
