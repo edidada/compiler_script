@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'go/k8s/linux/get_k8s.sh'
-          './go/k8s/linux/get_k8s.sh'
+          chmod +x -- 'go/k8s_v/linux/latest/get_k8s.sh'
+          './go/k8s_v/linux/latest/get_k8s.sh'
