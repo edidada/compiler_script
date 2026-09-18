@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/druid/linux/get_druid.sh'
-          './java/druid/linux/get_druid.sh'
+          chmod +x -- 'java/druid_v/linux/latest/get_druid.sh'
+          './java/druid_v/linux/latest/get_druid.sh'
