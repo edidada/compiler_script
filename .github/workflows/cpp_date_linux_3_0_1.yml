@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/date3_0_1/linux/get_date3_0_1_linux.sh'
-          './cpp/date3_0_1/linux/get_date3_0_1_linux.sh'
+          chmod +x -- 'cpp/date/linux/3_0_1/get_date3_0_1_linux.sh'
+          './cpp/date/linux/3_0_1/get_date3_0_1_linux.sh'
