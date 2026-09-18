@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/bazel/linux/get_java_bazel_linux.sh'
-          './java/bazel/linux/get_java_bazel_linux.sh'
+          chmod +x -- 'java/bazel_v/linux/latest/get_java_bazel_linux.sh'
+          './java/bazel_v/linux/latest/get_java_bazel_linux.sh'
