@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/iceberg_cpp/linux/get_iceberg_cpp_linux.sh'
-          './cpp/iceberg_cpp/linux/get_iceberg_cpp_linux.sh'
+          chmod +x -- 'cpp/iceberg_cpp_v/linux/latest/get_iceberg_cpp_linux.sh'
+          './cpp/iceberg_cpp_v/linux/latest/get_iceberg_cpp_linux.sh'
