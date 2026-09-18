@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_protobuf.sh'
-          './get_protobuf.sh'
+          chmod +x -- 'cpp/protobuf_v/linux/latest/get_protobuf.sh'
+          './cpp/protobuf_v/linux/latest/get_protobuf.sh'
