@@ -1,0 +1,36 @@
+name: build cpp/filezilla3_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'cpp/filezilla3_v/linux/latest'
+  pull_request:
+    branches:
+      - 'cpp/filezilla3_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'cpp/filezilla3/get_filezilla3_linux1.sh'
+          './cpp/filezilla3/get_filezilla3_linux1.sh'
+          chmod +x -- 'cpp/filezilla3/get_filezilla3_linux2.sh'
+          './cpp/filezilla3/get_filezilla3_linux2.sh'
+          chmod +x -- 'cpp/filezilla3/get_filezilla3_linux3.sh'
+          './cpp/filezilla3/get_filezilla3_linux3.sh'
