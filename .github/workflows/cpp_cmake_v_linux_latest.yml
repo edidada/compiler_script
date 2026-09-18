@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/cmake/get_cmake_linux.sh'
-          './cpp/cmake/get_cmake_linux.sh'
+          chmod +x -- 'cpp/cmake_v/linux/latest/get_cmake_linux.sh'
+          './cpp/cmake_v/linux/latest/get_cmake_linux.sh'
