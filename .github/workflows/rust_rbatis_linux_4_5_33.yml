@@ -1,0 +1,32 @@
+name: build rust/rbatis/linux/4_5_33
+
+on:
+  push:
+    branches:
+      - 'rust/rbatis/linux/4_5_33'
+  pull_request:
+    branches:
+      - 'rust/rbatis/linux/4_5_33'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'rust/rbatis/linux/4_5_33/get_rbatis_4_5_33_linux.sh'
+          './rust/rbatis/linux/4_5_33/get_rbatis_4_5_33_linux.sh'
