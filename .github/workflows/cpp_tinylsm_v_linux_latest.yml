@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/tinylsm/linux/get_tinylsm_linux.sh'
-          './cpp/tinylsm/linux/get_tinylsm_linux.sh'
+          chmod +x -- 'cpp/tinylsm_v/linux/latest/get_tinylsm_linux.sh'
+          './cpp/tinylsm_v/linux/latest/get_tinylsm_linux.sh'
