@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/get_dbeaver.sh'
-          './java/get_dbeaver.sh'
+          chmod +x -- 'java/dbeaver_v/linux/latest/get_dbeaver.sh'
+          './java/dbeaver_v/linux/latest/get_dbeaver.sh'
