@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/eastl/linux/get_eastl.sh'
-          './cpp/eastl/linux/get_eastl.sh'
+          chmod +x -- 'cpp/eastl_v/linux/latest/get_eastl.sh'
+          './cpp/eastl_v/linux/latest/get_eastl.sh'
