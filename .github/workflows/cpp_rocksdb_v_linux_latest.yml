@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/rocksdb/linux/get_rocksdb.sh'
-          './cpp/rocksdb/linux/get_rocksdb.sh'
+          chmod +x -- 'cpp/rocksdb_v/linux/latest/get_rocksdb.sh'
+          './cpp/rocksdb_v/linux/latest/get_rocksdb.sh'
