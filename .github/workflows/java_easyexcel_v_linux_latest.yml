@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/easyexcel/linux/get_easyexcel.sh'
-          './java/easyexcel/linux/get_easyexcel.sh'
+          chmod +x -- 'java/easyexcel_v/linux/latest/get_easyexcel.sh'
+          './java/easyexcel_v/linux/latest/get_easyexcel.sh'
