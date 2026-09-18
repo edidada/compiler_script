@@ -1,0 +1,32 @@
+name: build java/bazel_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'java/bazel_v/linux/latest'
+  pull_request:
+    branches:
+      - 'java/bazel_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'java/bazel/linux/get_java_bazel_linux.sh'
+          './java/bazel/linux/get_java_bazel_linux.sh'
