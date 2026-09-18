@@ -1,0 +1,32 @@
+name: build cpp/xlnt_v/macos/latest
+
+on:
+  push:
+    branches:
+      - 'cpp/xlnt_v/macos/latest'
+  pull_request:
+    branches:
+      - 'cpp/xlnt_v/macos/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'cpp/xlnt_v/macos/latest/get_xlnt_mac.sh'
+          './cpp/xlnt_v/macos/latest/get_xlnt_mac.sh'

@@ -1,0 +1,32 @@
+name: build cpp/openjdk/linux/21
+
+on:
+  push:
+    branches:
+      - 'cpp/openjdk/linux/21'
+  pull_request:
+    branches:
+      - 'cpp/openjdk/linux/21'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'cpp/openjdk/linux/21/download_openjdk21_jdk21.sh'
+          './cpp/openjdk/linux/21/download_openjdk21_jdk21.sh'

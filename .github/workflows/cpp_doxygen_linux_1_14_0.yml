@@ -1,0 +1,32 @@
+name: build cpp/doxygen/linux/1_14_0
+
+on:
+  push:
+    branches:
+      - 'cpp/doxygen/linux/1_14_0'
+  pull_request:
+    branches:
+      - 'cpp/doxygen/linux/1_14_0'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'cpp/doxygen/linux/1_14_0/get_doxygen_1_14_0_linux.sh'
+          './cpp/doxygen/linux/1_14_0/get_doxygen_1_14_0_linux.sh'
