@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'go/minio/linux/get_minio_2025_09_07.sh'
-          './go/minio/linux/get_minio_2025_09_07.sh'
+          chmod +x -- 'go/minio/linux/2025_09_07/get_minio_2025_09_07.sh'
+          './go/minio/linux/2025_09_07/get_minio_2025_09_07.sh'
