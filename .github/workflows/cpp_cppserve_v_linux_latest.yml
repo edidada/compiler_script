@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/cppserve/linux/get_cppserve_linux.sh'
-          './cpp/cppserve/linux/get_cppserve_linux.sh'
+          chmod +x -- 'cpp/cppserve_v/linux/latest/get_cppserve_linux.sh'
+          './cpp/cppserve_v/linux/latest/get_cppserve_linux.sh'
