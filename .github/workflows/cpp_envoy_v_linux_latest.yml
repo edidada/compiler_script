@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/envoy/linux/get_envoy.sh'
-          './cpp/envoy/linux/get_envoy.sh'
+          chmod +x -- 'cpp/envoy_v/linux/latest/get_envoy.sh'
+          './cpp/envoy_v/linux/latest/get_envoy.sh'
