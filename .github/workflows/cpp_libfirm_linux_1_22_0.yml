@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'c/libfirm/linux/1_22_0/get_libfirm.sh'
-          './c/libfirm/linux/1_22_0/get_libfirm.sh'
+          chmod +x -- 'cpp/libfirm/linux/1_22_0/get_libfirm.sh'
+          './cpp/libfirm/linux/1_22_0/get_libfirm.sh'
