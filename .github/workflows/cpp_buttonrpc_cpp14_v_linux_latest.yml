@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/buttonrpc_cpp14/get_buttonrpc_cpp14.sh'
-          './cpp/buttonrpc_cpp14/get_buttonrpc_cpp14.sh'
+          chmod +x -- 'cpp/buttonrpc_cpp14_v/linux/latest/get_buttonrpc_cpp14.sh'
+          './cpp/buttonrpc_cpp14_v/linux/latest/get_buttonrpc_cpp14.sh'
