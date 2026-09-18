@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'rust/fcp/linux/get_rust_fcp.sh'
-          './rust/fcp/linux/get_rust_fcp.sh'
+          chmod +x -- 'rust/fcp_v/linux/latest/get_rust_fcp.sh'
+          './rust/fcp_v/linux/latest/get_rust_fcp.sh'
