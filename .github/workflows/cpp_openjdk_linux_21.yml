@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/openjdk21/linux/download_openjdk21_jdk21.sh'
-          './cpp/openjdk21/linux/download_openjdk21_jdk21.sh'
+          chmod +x -- 'cpp/openjdk/linux/21/download_openjdk21_jdk21.sh'
+          './cpp/openjdk/linux/21/download_openjdk21_jdk21.sh'
