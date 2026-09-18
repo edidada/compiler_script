@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/yolov5s/android/get_yolov5s_android.sh'
-          './cpp/yolov5s/android/get_yolov5s_android.sh'
+          chmod +x -- 'cpp/yolov5s_v/android/latest/get_yolov5s_android.sh'
+          './cpp/yolov5s_v/android/latest/get_yolov5s_android.sh'
