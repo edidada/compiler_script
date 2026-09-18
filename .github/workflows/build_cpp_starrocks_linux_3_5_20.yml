@@ -1,0 +1,32 @@
+name: build cpp/starrocks/linux/3_5_20
+
+on:
+  push:
+    branches:
+      - 'cpp/starrocks/linux/3_5_20'
+  pull_request:
+    branches:
+      - 'cpp/starrocks/linux/3_5_20'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'cpp/starrocks/linux/3_5_20/get_starrocks_3_5_20.sh'
+          './cpp/starrocks/linux/3_5_20/get_starrocks_3_5_20.sh'
