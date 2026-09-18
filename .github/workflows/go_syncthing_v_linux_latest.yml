@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_syncthing.sh'
-          './get_syncthing.sh'
+          chmod +x -- 'go/syncthing_v/linux/latest/get_syncthing.sh'
+          './go/syncthing_v/linux/latest/get_syncthing.sh'
