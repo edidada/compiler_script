@@ -28,7 +28,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/curl/linux/get_curl_cmake.sh'
-          './cpp/curl/linux/get_curl_cmake.sh'
-          chmod +x -- 'cpp/curl/linux/get_curl.sh'
-          './cpp/curl/linux/get_curl.sh'
+          chmod +x -- 'cpp/curl_v/linux/latest/get_curl_cmake.sh'
+          './cpp/curl_v/linux/latest/get_curl_cmake.sh'
+          chmod +x -- 'cpp/curl_v/linux/latest/get_curl.sh'
+          './cpp/curl_v/linux/latest/get_curl.sh'
