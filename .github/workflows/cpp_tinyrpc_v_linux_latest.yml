@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/tinyrpc/linux/get_tinyrpc.sh'
-          './cpp/tinyrpc/linux/get_tinyrpc.sh'
+          chmod +x -- 'cpp/tinyrpc_v/linux/latest/get_tinyrpc.sh'
+          './cpp/tinyrpc_v/linux/latest/get_tinyrpc.sh'
