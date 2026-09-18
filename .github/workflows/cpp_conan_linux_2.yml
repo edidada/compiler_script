@@ -28,7 +28,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/conan2/get_conan2.sh'
-          './cpp/conan2/get_conan2.sh'
-          chmod +x -- 'cpp/conan2/run_conan_exam2.sh'
-          './cpp/conan2/run_conan_exam2.sh'
+          chmod +x -- 'cpp/conan/linux/2/get_conan2.sh'
+          './cpp/conan/linux/2/get_conan2.sh'
+          chmod +x -- 'cpp/conan/linux/2/run_conan_exam2.sh'
+          './cpp/conan/linux/2/run_conan_exam2.sh'
