@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_privoxy.sh'
-          './get_privoxy.sh'
+          chmod +x -- 'c/privoxy_v/linux/latest/get_privoxy.sh'
+          './c/privoxy_v/linux/latest/get_privoxy.sh'
