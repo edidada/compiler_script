@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/drogon/get_drogon_linux.sh'
-          './cpp/drogon/get_drogon_linux.sh'
+          chmod +x -- 'cpp/drogon_v/linux/latest/get_drogon_linux.sh'
+          './cpp/drogon_v/linux/latest/get_drogon_linux.sh'
