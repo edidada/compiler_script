@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/cpp_tbox/get_cpp_tbox.sh'
-          './cpp/cpp_tbox/get_cpp_tbox.sh'
+          chmod +x -- 'cpp/cpp_tbox_v/linux/latest/get_cpp_tbox.sh'
+          './cpp/cpp_tbox_v/linux/latest/get_cpp_tbox.sh'
