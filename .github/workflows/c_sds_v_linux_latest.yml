@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_sds.sh'
-          './get_sds.sh'
+          chmod +x -- 'c/sds_v/linux/latest/get_sds.sh'
+          './c/sds_v/linux/latest/get_sds.sh'
