@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_poco_linux.sh'
-          './get_poco_linux.sh'
+          chmod +x -- 'cpp/poco_v/linux/latest/get_poco_linux.sh'
+          './cpp/poco_v/linux/latest/get_poco_linux.sh'
