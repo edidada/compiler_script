@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/camel/linux/get_camel.sh'
-          './java/camel/linux/get_camel.sh'
+          chmod +x -- 'java/camel_v/linux/latest/get_camel.sh'
+          './java/camel_v/linux/latest/get_camel.sh'
