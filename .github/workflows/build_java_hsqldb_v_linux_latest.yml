@@ -1,0 +1,32 @@
+name: build java/hsqldb_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'java/hsqldb_v/linux/latest'
+  pull_request:
+    branches:
+      - 'java/hsqldb_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'java/hsqldb/linux/get_hsqldb.sh'
+          './java/hsqldb/linux/get_hsqldb.sh'
