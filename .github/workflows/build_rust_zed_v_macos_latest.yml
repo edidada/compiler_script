@@ -1,0 +1,32 @@
+name: build rust/zed_v/macos/latest
+
+on:
+  push:
+    branches:
+      - 'rust/zed_v/macos/latest'
+  pull_request:
+    branches:
+      - 'rust/zed_v/macos/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'rust/macos/zed_macos.sh'
+          './rust/macos/zed_macos.sh'
