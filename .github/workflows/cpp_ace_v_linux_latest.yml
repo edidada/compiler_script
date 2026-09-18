@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/ace/linux/get_ace_linux.sh'
-          './cpp/ace/linux/get_ace_linux.sh'
+          chmod +x -- 'cpp/ace_v/linux/latest/get_ace_linux.sh'
+          './cpp/ace_v/linux/latest/get_ace_linux.sh'
