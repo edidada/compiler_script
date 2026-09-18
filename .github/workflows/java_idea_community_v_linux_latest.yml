@@ -1,4 +1,4 @@
-name: build IntelliJ IDEA Community latest
+name: build java/idea_community_v/linux/latest
 
 on:
   push:
@@ -17,17 +17,16 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Clone matching private source branch
-        shell: bash
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
-        run: |
-          set -euo pipefail
-          gh repo clone sandisks/github_codespaces_compile private-source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
-
-      - name: Execute source script
         shell: bash
         run: |
           set -euo pipefail
-          test -f 'private-source/java/idea_community/linux/java_idea_community_linux.sh'
-          chmod +x 'private-source/java/idea_community/linux/java_idea_community_linux.sh'
-          'private-source/java/idea_community/linux/java_idea_community_linux.sh'
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'java/idea_community_v/linux/latest/java_idea_community_linux.sh'
+          './java/idea_community_v/linux/latest/java_idea_community_linux.sh'
