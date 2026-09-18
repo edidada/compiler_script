@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_osg.sh'
-          './get_osg.sh'
+          chmod +x -- 'cpp/osg_v/linux/latest/get_osg.sh'
+          './cpp/osg_v/linux/latest/get_osg.sh'
