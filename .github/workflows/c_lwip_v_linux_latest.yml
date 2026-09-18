@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'get_lwip.sh'
-          './get_lwip.sh'
+          chmod +x -- 'c/lwip_v/linux/latest/get_lwip.sh'
+          './c/lwip_v/linux/latest/get_lwip.sh'
