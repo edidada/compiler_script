@@ -28,9 +28,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/filezilla3/get_filezilla3_linux1.sh'
-          './cpp/filezilla3/get_filezilla3_linux1.sh'
-          chmod +x -- 'cpp/filezilla3/get_filezilla3_linux2.sh'
-          './cpp/filezilla3/get_filezilla3_linux2.sh'
-          chmod +x -- 'cpp/filezilla3/get_filezilla3_linux3.sh'
-          './cpp/filezilla3/get_filezilla3_linux3.sh'
+          chmod +x -- 'cpp/filezilla3_v/linux/latest/get_filezilla3_linux1.sh'
+          './cpp/filezilla3_v/linux/latest/get_filezilla3_linux1.sh'
+          chmod +x -- 'cpp/filezilla3_v/linux/latest/get_filezilla3_linux2.sh'
+          './cpp/filezilla3_v/linux/latest/get_filezilla3_linux2.sh'
+          chmod +x -- 'cpp/filezilla3_v/linux/latest/get_filezilla3_linux3.sh'
+          './cpp/filezilla3_v/linux/latest/get_filezilla3_linux3.sh'
