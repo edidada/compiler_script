@@ -1,4 +1,4 @@
-name: build mio 1.1.1
+name: build rust/mio/linux/1_1_1
 
 on:
   push:
@@ -17,17 +17,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone matching private source branch
-        shell: bash
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
-        run: |
-          set -euo pipefail
-          gh repo clone sandisks/github_codespaces_compile private-source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
-
-      - name: Execute source script
         shell: bash
         run: |
           set -euo pipefail
-          test -f 'private-source/rust/mio/1_1_1/linux/get_mio_1_1_1_linux.sh'
-          chmod +x 'private-source/rust/mio/1_1_1/linux/get_mio_1_1_1_linux.sh'
-          'private-source/rust/mio/1_1_1/linux/get_mio_1_1_1_linux.sh'
+          gh repo clone sandisks/github_codespaces_compile source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'rust/mio/linux/1_1_1/get_mio_1_1_1_linux.sh'
+          './rust/mio/linux/1_1_1/get_mio_1_1_1_linux.sh'
