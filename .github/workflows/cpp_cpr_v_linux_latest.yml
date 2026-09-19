@@ -1,0 +1,17 @@
+name: build cpp/cpr_v/linux/latest
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        run: gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - working-directory: source
+        shell: bash
+        run: |
+          chmod +x './cpp/cpr_v/linux/latest/build_cpr_v.sh'
+          './cpp/cpr_v/linux/latest/build_cpr_v.sh'
