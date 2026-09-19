@@ -1,0 +1,34 @@
+name: build rust/bat/windows/0_26_1
+
+on:
+  push:
+    branches:
+      - 'rust/bat/windows/0_26_1'
+  pull_request:
+    branches:
+      - 'rust/bat/windows/0_26_1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+    timeout-minutes: 360
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $true
+          gh repo clone "$env:GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$env:GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $true
+          & './rust/bat/windows/0_26_1/get_rust.ps1'
