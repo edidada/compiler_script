@@ -1,0 +1,33 @@
+name: build rust/just/linux/1_58_0
+
+on:
+  push:
+    branches:
+      - 'rust/just/linux/1_58_0'
+  pull_request:
+    branches:
+      - 'rust/just/linux/1_58_0'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x 'rust/just/linux/1_58_0/get_rust.sh'
+          './rust/just/linux/1_58_0/get_rust.sh'
