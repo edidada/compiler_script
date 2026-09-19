@@ -17,6 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
+      - name: Set up compatible Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
       - name: Clone matching private source branch
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
