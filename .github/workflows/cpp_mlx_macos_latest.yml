@@ -1,0 +1,33 @@
+name: build cpp/mlx/macos/latest
+
+on:
+  push:
+    branches:
+      - 'cpp/mlx/macos/latest'
+  pull_request:
+    branches:
+      - 'cpp/mlx/macos/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-latest
+    timeout-minutes: 360
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'cpp/mlx/macos/latest/get_mlx.sh'
+          './cpp/mlx/macos/latest/get_mlx.sh'
