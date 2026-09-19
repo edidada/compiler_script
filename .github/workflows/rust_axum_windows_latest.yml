@@ -1,0 +1,34 @@
+name: build rust/axum/windows/latest
+
+on:
+  push:
+    branches:
+      - 'rust/axum/windows/latest'
+  pull_request:
+    branches:
+      - 'rust/axum/windows/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+    timeout-minutes: 360
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $true
+          gh repo clone "$env:GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$env:GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $true
+          & './rust/axum/windows/latest/get_rust.ps1'
