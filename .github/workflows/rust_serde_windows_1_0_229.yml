@@ -1,0 +1,34 @@
+name: build rust/serde/windows/1_0_229
+
+on:
+  push:
+    branches:
+      - 'rust/serde/windows/1_0_229'
+  pull_request:
+    branches:
+      - 'rust/serde/windows/1_0_229'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+    timeout-minutes: 360
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $true
+          gh repo clone "$env:GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$env:GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $true
+          & './rust/serde/windows/1_0_229/get_rust.ps1'
