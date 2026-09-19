@@ -29,5 +29,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/webrtc/macos/latest/get_webrtc.sh'
+          chmod +x 'cpp/webrtc/macos/latest/get_webrtc.sh'
           './cpp/webrtc/macos/latest/get_webrtc.sh'
