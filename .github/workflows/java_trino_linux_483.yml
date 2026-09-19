@@ -1,0 +1,37 @@
+name: build java/trino/linux/483
+
+on:
+  push:
+    branches:
+      - 'java/trino/linux/483'
+  pull_request:
+    branches:
+      - 'java/trino/linux/483'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Set up JDK 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'java/trino/linux/483/get_trino.sh'
+          './java/trino/linux/483/get_trino.sh'
