@@ -21,7 +21,8 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'      - name: Clone matching private source branch
+          java-version: '17'
+      - name: Clone matching private source branch
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
         shell: bash
