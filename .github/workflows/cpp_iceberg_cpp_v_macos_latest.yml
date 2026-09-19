@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/iceberg_cpp_v/macos/latest/get_iceberg_cpp_macos.sh'
+          chmod +x 'cpp/iceberg_cpp_v/macos/latest/get_iceberg_cpp_macos.sh'
           './cpp/iceberg_cpp_v/macos/latest/get_iceberg_cpp_macos.sh'
