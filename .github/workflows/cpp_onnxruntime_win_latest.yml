@@ -1,0 +1,30 @@
+name: build cpp/onnxruntime/win/latest
+
+on:
+  push:
+    branches:
+      - 'cpp/onnxruntime/win/latest'
+  pull_request:
+    branches:
+      - 'cpp/onnxruntime/win/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 360
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: pwsh
+        run: |
+          gh repo clone "$env:GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$env:GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: pwsh
+        run: |
+          & './cpp/onnxruntime/win/latest/get_onnxruntime.ps1'
