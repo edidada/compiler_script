@@ -28,5 +28,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/xlnt_v/macos/latest/get_xlnt_mac.sh'
+          chmod +x 'cpp/xlnt_v/macos/latest/get_xlnt_mac.sh'
           './cpp/xlnt_v/macos/latest/get_xlnt_mac.sh'
