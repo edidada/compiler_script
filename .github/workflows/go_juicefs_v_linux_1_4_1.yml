@@ -1,0 +1,19 @@
+name: build go/juicefs_v/linux/1_4_1
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Clone source
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        run: gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute build
+        working-directory: source
+        shell: bash
+        run: |
+          chmod +x './go/juicefs_v/linux/1_4_1/build_juicefs_v.sh'
+          './go/juicefs_v/linux/1_4_1/build_juicefs_v.sh'
