@@ -1,0 +1,33 @@
+name: build c/apache_xerces_for_c_xml_parser/linux/latest
+
+on:
+  push:
+    branches:
+      - 'c/apache_xerces_for_c_xml_parser/linux/latest'
+  pull_request:
+    branches:
+      - 'c/apache_xerces_for_c_xml_parser/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'c/apache_xerces_for_c_xml_parser/linux/latest/build.sh' 'tools/foundations/build_project.sh'
+          './c/apache_xerces_for_c_xml_parser/linux/latest/build.sh'
