@@ -29,5 +29,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/mlx/macos/0_32_2/get_mlx.sh'
+          chmod +x 'cpp/mlx/macos/0_32_2/get_mlx.sh'
           './cpp/mlx/macos/0_32_2/get_mlx.sh'

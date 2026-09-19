@@ -29,5 +29,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/tvm/macos/latest/get_tvm.sh'
+          chmod +x 'cpp/tvm/macos/latest/get_tvm.sh'
           './cpp/tvm/macos/latest/get_tvm.sh'

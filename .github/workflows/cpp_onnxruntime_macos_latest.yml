@@ -29,5 +29,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/onnxruntime/macos/latest/get_onnxruntime.sh'
+          chmod +x 'cpp/onnxruntime/macos/latest/get_onnxruntime.sh'
           './cpp/onnxruntime/macos/latest/get_onnxruntime.sh'

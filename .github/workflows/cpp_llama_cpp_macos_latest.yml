@@ -29,5 +29,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/llama_cpp/macos/latest/get_ai.sh'
+          chmod +x 'cpp/llama_cpp/macos/latest/get_ai.sh'
           './cpp/llama_cpp/macos/latest/get_ai.sh'
