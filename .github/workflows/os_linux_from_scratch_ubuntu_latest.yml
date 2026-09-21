@@ -1,0 +1,41 @@
+name: build os/linux_from_scratch/ubuntu/latest
+
+on:
+  push:
+    branches:
+      - 'os/linux_from_scratch/ubuntu/latest'
+  pull_request:
+    branches:
+      - 'os/linux_from_scratch/ubuntu/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - name: Reclaim disk space for the LFS image
+        shell: bash
+        run: |
+          set -euo pipefail
+          df -h
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc
+          docker image prune --all --force
+          df -h
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Build Linux From Scratch on Ubuntu
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'os/linux_from_scratch/ubuntu/latest/build.sh'
+          './os/linux_from_scratch/ubuntu/latest/build.sh'
