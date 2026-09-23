@@ -1,0 +1,37 @@
+name: build java/ml_kit/android/latest
+
+on:
+  push:
+    branches:
+      - 'java/ml_kit/android/latest'
+  pull_request:
+    branches:
+      - 'java/ml_kit/android/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'java/ml_kit/android/latest/build.sh'
+          './java/ml_kit/android/latest/build.sh'
