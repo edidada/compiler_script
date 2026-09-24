@@ -17,6 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
+      - name: Set up Buildr-compatible Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '8'
       - name: Set up compatible Ruby and Bundler
         uses: ruby/setup-ruby@v1
         with:
