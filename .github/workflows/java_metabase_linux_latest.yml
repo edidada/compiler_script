@@ -20,6 +20,10 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
+      - name: Set up Clojure CLI
+        uses: DeLaGuardo/setup-clojure@13.7
+        with:
+          cli: latest
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
