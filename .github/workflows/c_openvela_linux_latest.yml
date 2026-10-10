@@ -1,0 +1,29 @@
+name: build c/openvela/linux/latest
+
+on:
+  push:
+    branches: ['c/openvela/linux/latest']
+  pull_request:
+    branches: ['c/openvela/linux/latest']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Build openvela NuttX simulator image
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x c/openvela/linux/latest/build.sh
+          c/openvela/linux/latest/build.sh
