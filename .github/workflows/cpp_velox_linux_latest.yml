@@ -1,0 +1,21 @@
+name: build cpp/velox/linux/latest
+on:
+  push:
+    branches: ['cpp/velox/linux/latest']
+  pull_request:
+    branches: ['cpp/velox/linux/latest']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 360
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        run: gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        run: chmod +x cpp/velox/linux/latest/build.sh && cpp/velox/linux/latest/build.sh
