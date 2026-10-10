@@ -24,6 +24,14 @@ jobs:
       - uses: android-actions/setup-android@v3
         with:
           packages: platform-tools platforms;android-22
+      - name: Provide legacy Android tools location
+        shell: bash
+        run: |
+          set -euo pipefail
+          # android-maven-plugin 4.x reads tools/source.properties, while
+          # current SDK images install the same command-line tools under
+          # cmdline-tools/latest.
+          sudo ln -sfn "$ANDROID_HOME/cmdline-tools/latest" "$ANDROID_HOME/tools"
       - name: Set up legacy ZXing build Java
         uses: actions/setup-java@v4
         with:
