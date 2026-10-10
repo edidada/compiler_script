@@ -32,6 +32,9 @@ jobs:
         with:
           # Metabase declares this exact Bun version in package.json.
           bun-version: '1.3.14'
+      - name: Set up uv
+        # Metabase uses uv to install the bundled sqlglot Python dependencies.
+        uses: astral-sh/setup-uv@v6
       - name: Clone matching private source branch
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
