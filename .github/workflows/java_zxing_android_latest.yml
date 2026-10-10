@@ -23,7 +23,7 @@ jobs:
           java-version: '17'
       - uses: android-actions/setup-android@v3
         with:
-          packages: platform-tools platforms;android-22 build-tools;25.0.3
+          packages: platform-tools platforms;android-22 build-tools;30.0.3
       - name: Provide legacy Android tools location
         shell: bash
         run: |
@@ -34,8 +34,8 @@ jobs:
           sudo ln -sfn "$ANDROID_HOME/cmdline-tools/latest" "$ANDROID_HOME/tools"
           # The legacy plugin executes dx.jar, removed from modern build tools.
           # Keep its current aapt/zipalign toolchain, and provide only dx from
-          # the last compatible build-tools release.
-          legacy_dx="$ANDROID_HOME/build-tools/25.0.3/lib/dx.jar"
+          # the final dx release, which also accepts Java 8 class files.
+          legacy_dx="$ANDROID_HOME/build-tools/30.0.3/lib/dx.jar"
           current_build_tools="$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -V | tail -n 1)"
           test -r "$legacy_dx"
           sudo ln -sfn "$legacy_dx" "$ANDROID_HOME/build-tools/$current_build_tools/lib/dx.jar"
