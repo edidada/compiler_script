@@ -1,0 +1,34 @@
+name: build go/buildkit_v/linux/0_34_0
+
+# buildkit v0.34.0：moby/buildkit 最新稳定标签。上游 make binaries 需要 docker buildx bake，
+# 这里复刻 Dockerfile 的 buildctl/buildkitd stage 用纯 go build，脚本在同名分支的源仓库里。
+on:
+  push:
+    branches: ['go/buildkit_v/linux/0_34_0']
+  pull_request:
+    branches: ['go/buildkit_v/linux/0_34_0']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Clone matching source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+
+      - name: Build buildkit v0.34.0
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'go/buildkit_v/linux/0_34_0/build_buildkit.sh'
+          './go/buildkit_v/linux/0_34_0/build_buildkit.sh'
