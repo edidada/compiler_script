@@ -3,10 +3,10 @@ name: build c/apache_apr_portable_runtime/linux/latest
 on:
   push:
     branches:
-      - 'c/apache_apr_portable_runtime/linux/latest'
+      - 'c/apache/apr_portable_runtime/linux/latest'
   pull_request:
     branches:
-      - 'c/apache_apr_portable_runtime/linux/latest'
+      - 'c/apache/apr_portable_runtime/linux/latest'
   workflow_dispatch:
 
 permissions:
