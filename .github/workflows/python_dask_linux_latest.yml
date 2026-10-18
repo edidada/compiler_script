@@ -1,0 +1,21 @@
+name: build python/dask/linux/latest
+on:
+  push:
+    branches: ['python/dask/linux/latest']
+  pull_request:
+    branches: ['python/dask/linux/latest']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        run: gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        run: chmod +x python/dask/linux/latest/build.sh && python/dask/linux/latest/build.sh
