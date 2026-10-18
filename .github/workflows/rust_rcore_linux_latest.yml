@@ -1,0 +1,33 @@
+name: build rust/rcore/linux/latest
+
+on:
+  push:
+    branches: ['rust/rcore/linux/latest']
+  pull_request:
+    branches: ['rust/rcore/linux/latest']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rust-src, llvm-tools-preview
+          targets: riscv64gc-unknown-none-elf
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Cross-build rCore kernel and file-system image
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x rust/rcore/linux/latest/build.sh
+          rust/rcore/linux/latest/build.sh
