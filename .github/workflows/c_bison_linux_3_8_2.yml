@@ -1,0 +1,33 @@
+name: build bison linux
+
+on:
+  push:
+    branches:
+      - 'c/bison/linux/3_8_2'
+  pull_request:
+    branches:
+      - 'c/bison/linux/3_8_2'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 360
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'c/bison/linux/3_8_2/get_bison_3_8_2.sh'
+          './c/bison/linux/3_8_2/get_bison_3_8_2.sh'
