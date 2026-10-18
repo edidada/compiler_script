@@ -24,7 +24,7 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $PSNativeCommandUseErrorActionPreference = $true
-          gh repo clone "$env:GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$env:GITHUB_REF_NAME"
+          gh repo clone "$env:GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'rust/axum/windows/0_8_9'
       - name: Execute source script
         working-directory: source
         shell: pwsh

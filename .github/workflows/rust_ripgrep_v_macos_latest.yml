@@ -10,7 +10,7 @@ jobs:
       - name: Clone source
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
-        run: gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+        run: gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'rust/ripgrep_v/macos/latest'
       - name: Execute build
         working-directory: source
         shell: bash
