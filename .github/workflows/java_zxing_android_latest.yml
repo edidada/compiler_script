@@ -1,0 +1,60 @@
+name: build java/zxing/android/latest
+
+on:
+  push:
+    branches:
+      - 'java/zxing/android/latest'
+  pull_request:
+    branches:
+      - 'java/zxing/android/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Set up Android SDK Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools platforms;android-22 build-tools;30.0.3
+      - name: Provide legacy Android tools location
+        shell: bash
+        run: |
+          set -euo pipefail
+          # android-maven-plugin 4.x reads tools/source.properties, while
+          # current SDK images install the same command-line tools under
+          # cmdline-tools/latest.
+          sudo ln -sfn "$ANDROID_HOME/cmdline-tools/latest" "$ANDROID_HOME/tools"
+          # The legacy plugin executes dx.jar, removed from modern build tools.
+          # Keep its current aapt/zipalign toolchain, and provide only dx from
+          # the final dx release, which also accepts Java 8 class files.
+          legacy_dx="$ANDROID_HOME/build-tools/30.0.3/lib/dx.jar"
+          current_build_tools="$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -V | tail -n 1)"
+          test -r "$legacy_dx"
+          sudo ln -sfn "$legacy_dx" "$ANDROID_HOME/build-tools/$current_build_tools/lib/dx.jar"
+      - name: Set up legacy ZXing build Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'java/zxing/android/latest/build.sh'
+          './java/zxing/android/latest/build.sh'
