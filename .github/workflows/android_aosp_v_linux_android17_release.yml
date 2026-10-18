@@ -37,13 +37,19 @@ jobs:
       - name: Check for an online self-hosted "aosp" runner
         id: check
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # 默认的 GITHUB_TOKEN 读不了 /actions/runners（403 Resource not accessible
+          # by integration，实测如此），必须用仓库自带的 COMPILER_PAT。
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
         shell: bash
         run: |
           set -euo pipefail
-          gh api "repos/${GITHUB_REPOSITORY}/actions/runners" --paginate \
-            --jq '.workflow_runners[]? | select(.status=="online") | .labels[].name' \
-            > /tmp/labels.txt 2>/dev/null || true
+          if ! gh api "repos/${GITHUB_REPOSITORY}/actions/runners" --paginate \
+              --jq '.workflow_runners[]? | select(.status=="online") | .labels[].name' \
+              > /tmp/labels.txt 2>/tmp/labels.err; then
+            echo "WARN: 查询 runner 列表失败，按「没有 runner」处理。原因："
+            sed -n '1,3p' /tmp/labels.err
+            : > /tmp/labels.txt
+          fi
           sort -u /tmp/labels.txt -o /tmp/labels.txt
           echo "==== 当前在线 self-hosted runner 的标签 ===="
           if [ -s /tmp/labels.txt ]; then cat /tmp/labels.txt; else echo "(一个都没有)"; fi
