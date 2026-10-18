@@ -1,0 +1,102 @@
+name: build android/aosp_v/linux/android17_release
+
+# AOSP 平台整体构建（repo init/sync + lunch aosp_cf_x86_64_phone-trunk_staging-userdebug + m）。
+#
+# 为什么这里不是 ubuntu-24.04：全平台源码即使 --depth=1 也要 ~250 GB，out/ 再加 150 GB 以上，
+# 托管 runner 根盘只有约 84 GB、单 job 上限 6 小时，物理上装不下也跑不完。
+# 所以 build job 跑在 self-hosted（label: aosp）上。
+# 为了不让人误触发后 job 一直卡在 "Waiting for a runner to pick up this job"，
+# 前面加了 preflight：没有在线的 aosp runner 就跳过 build，并把缺的条件打进日志。
+on:
+  push:
+    branches: ['android/aosp_v/linux/android17_release']
+  pull_request:
+    branches: ['android/aosp_v/linux/android17_release']
+  workflow_dispatch:
+    inputs:
+      aosp_branch:
+        description: 'AOSP manifest 分支'
+        required: false
+        default: 'android17-release'
+      build_target:
+        description: 'lunch 目标'
+        required: false
+        default: 'aosp_cf_x86_64_phone-trunk_staging-userdebug'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      runner_found: ${{ steps.check.outputs.runner_found }}
+    steps:
+      - name: Check for an online self-hosted "aosp" runner
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api "repos/${GITHUB_REPOSITORY}/actions/runners" --paginate \
+            --jq '.workflow_runners[]? | select(.status=="online") | .labels[].name' \
+            > /tmp/labels.txt 2>/dev/null || true
+          sort -u /tmp/labels.txt -o /tmp/labels.txt
+          echo "==== 当前在线 self-hosted runner 的标签 ===="
+          if [ -s /tmp/labels.txt ]; then cat /tmp/labels.txt; else echo "(一个都没有)"; fi
+          if grep -qx 'aosp' /tmp/labels.txt; then
+            echo "runner_found=true" >> "$GITHUB_OUTPUT"
+            echo "找到在线的 aosp runner，继续构建。"
+          else
+            echo "runner_found=false" >> "$GITHUB_OUTPUT"
+            cat <<'TXT'
+          没有标签为 aosp 的在线 self-hosted runner，build job 跳过。
+          要真跑这条构建，需要一台 Linux x86_64 机器：>=450 GB 空闲磁盘、>=32 GB 内存、
+          能访问 android.googlesource.com（或清华 AOSP 镜像）。然后在机器上：
+            1) 取注册 token（有效期 1 小时，别贴到公开日志里）：
+               gh api -X POST repos/OWNER/REPO/actions/runners/registration-token
+            2) 下载并配置 runner：
+               curl -fsSL https://github.com/actions/runner/releases/latest/download/actions-runner-linux-x64.tar.gz -o r.tar.gz
+               mkdir -p actions-runner && tar -xzf r.tar.gz -C actions-runner
+               cd actions-runner && ./config.sh --url https://github.com/OWNER/REPO --token TOKEN \
+                 --labels aosp --unattended && ./run.sh
+          TXT
+          fi
+
+  build:
+    needs: preflight
+    if: needs.preflight.outputs.runner_found == 'true'
+    runs-on: [self-hosted, aosp]
+    timeout-minutes: 720
+    steps:
+      - name: Preflight tooling on the self-hosted runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "runner    = $(hostname) / $(uname -srm)"
+          echo "free disk = $(df -BG --output=avail "${RUNNER_WORKSPACE:-$PWD}" | tail -1)"
+          for t in git curl python3 tar gh; do
+            command -v "$t" >/dev/null 2>&1 || { echo "FATAL: runner 上缺 $t" >&2; exit 1; }
+          done
+
+      - name: Clone matching source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+
+      - name: Build AOSP android17-release
+        working-directory: source
+        shell: bash
+        env:
+          AOSP_BRANCH: ${{ github.event.inputs.aosp_branch || 'android17-release' }}
+          BUILD_TARGET: ${{ github.event.inputs.build_target || 'aosp_cf_x86_64_phone-trunk_staging-userdebug' }}
+        run: |
+          set -euo pipefail
+          chmod +x -- 'android/aosp_v/linux/android17_release/build_aosp.sh'
+          './android/aosp_v/linux/android17_release/build_aosp.sh'
