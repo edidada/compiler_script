@@ -1,0 +1,36 @@
+name: build go/prometheus_v/linux/3_15_0
+
+# Prometheus v3.15.0：prometheus/prometheus（CNCF 毕业项目）当前最新稳定 release。
+# 走完整上游 make build（pnpm 构建 UI -> compress_assets -> promu build -tags netgo,builtinassets），
+# 所以除了 Go 还要装 node 24 + pnpm 10，脚本里做。
+# 脚本在同名分支的源仓库里。
+on:
+  push:
+    branches: ['go/prometheus_v/linux/3_15_0']
+  pull_request:
+    branches: ['go/prometheus_v/linux/3_15_0']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - name: Clone matching source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+
+      - name: Build Prometheus v3.15.0
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'go/prometheus_v/linux/3_15_0/build_prometheus.sh'
+          './go/prometheus_v/linux/3_15_0/build_prometheus.sh'
