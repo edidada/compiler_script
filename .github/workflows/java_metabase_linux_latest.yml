@@ -1,0 +1,51 @@
+name: build java/metabase/linux/latest
+
+on:
+  push:
+    branches:
+      - 'java/metabase/linux/latest'
+  pull_request:
+    branches:
+      - 'java/metabase/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Set up Clojure CLI
+        uses: DeLaGuardo/setup-clojure@13.7.0
+        with:
+          cli: latest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          # Metabase declares this exact Bun version in package.json.
+          bun-version: '1.3.14'
+      - name: Set up uv
+        # Metabase uses uv to install the bundled sqlglot Python dependencies.
+        uses: astral-sh/setup-uv@v6
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'java/metabase/linux/latest/build.sh'
+          './java/metabase/linux/latest/build.sh'
