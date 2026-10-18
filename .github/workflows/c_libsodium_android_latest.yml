@@ -1,0 +1,30 @@
+name: build c/libsodium/android/latest
+
+on:
+  push:
+    branches: ['c/libsodium/android/latest']
+  pull_request:
+    branches: ['c/libsodium/android/latest']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Set up Android NDK
+        uses: nttld/setup-ndk@v1
+        with:
+          ndk-version: r27c
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: chmod +x c/libsodium/android/latest/build.sh && c/libsodium/android/latest/build.sh
