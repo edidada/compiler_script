@@ -1,0 +1,50 @@
+name: build cpp/oceanbase/linux/latest
+
+on:
+  push:
+    branches:
+      - 'cpp/oceanbase/linux/latest'
+  pull_request:
+    branches:
+      - 'cpp/oceanbase/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # 说明: OceanBase 是超重型构建 —— 实测(12 核 / 23 GB / -j4)耗时 1h48m,
+    # 源码 + 构建产物约 56 GB, 链接阶段单个 ld.lld 进程需 8~12 GB 内存。
+    # GitHub 托管 runner(4 核 / 16 GB 内存 / 14 GB SSD)资源不足,
+    # 大概率会因磁盘写满或内存不足失败(预计会在数十分钟后 NO SPACE / OOM)。
+    # 若要在 CI 里真正跑通, 请改成自托管 runner(建议 ≥8 核 / 32 GB / 200 GB 磁盘):
+    # runs-on: [self-hosted, linux, x64, ob]
+    runs-on: ubuntu-26.04
+    timeout-minutes: 360
+    steps:
+      - name: Show runner resources
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "cores=$(nproc)"
+          free -h
+          echo "--- disk ---"
+          df -h "$HOME" /
+          head -2 /etc/os-release
+
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'cpp/oceanbase/linux/latest/get_oceanbase_latest_linux.sh'
+          './cpp/oceanbase/linux/latest/get_oceanbase_latest_linux.sh'
