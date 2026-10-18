@@ -1,0 +1,34 @@
+name: build go/nerdctl_v/linux/2_4_1
+
+# nerdctl v2.4.1：containerd/nerdctl 最新稳定标签。上游 make binaries 是纯 Go 构建，
+# 托管 runner 可以直接跑，脚本在同名分支的源仓库里。
+on:
+  push:
+    branches: ['go/nerdctl_v/linux/2_4_1']
+  pull_request:
+    branches: ['go/nerdctl_v/linux/2_4_1']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Clone matching source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+
+      - name: Build nerdctl v2.4.1
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'go/nerdctl_v/linux/2_4_1/build_nerdctl.sh'
+          './go/nerdctl_v/linux/2_4_1/build_nerdctl.sh'
