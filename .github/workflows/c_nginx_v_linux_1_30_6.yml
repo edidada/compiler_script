@@ -1,0 +1,38 @@
+name: build c/nginx_v/linux/1_30_6
+
+# nginx 1.30.6（nginx.org 上当前的 Stable 分支，2026-10-24 实测）。
+# 走官方 tarball -> configure -> make -> make install 全源码链路，脚本里还会真的把
+# nginx 起来跑 HTTP/HTTPS/HTTP2/stub_status/gzip_static/reload 的实测。
+# 脚本在同名分支的源仓库里：c/nginx_v/linux/1_30_6/build_nginx.sh
+# clone 分支写死字面量，从 main 直接 workflow_dispatch 也能跑对。
+on:
+  push:
+    branches: ['c/nginx_v/linux/1_30_6']
+  pull_request:
+    branches: ['c/nginx_v/linux/1_30_6']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      NGINX_VERSION: '1.30.6'
+    steps:
+      - name: Clone matching source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'c/nginx_v/linux/1_30_6'
+
+      - name: Build nginx 1.30.6 from source
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash 'c/nginx_v/linux/1_30_6/build_nginx.sh'
