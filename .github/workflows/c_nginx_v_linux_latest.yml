@@ -1,11 +1,14 @@
 name: build c/nginx_v/linux/latest
 
-# nginx（滚动 Stable）源码编译。脚本在同名分支的源仓库里：
+# nginx 源码编译（版本跟着 nginx.org 走）。脚本在同名分支的源仓库里：
 #   c/nginx_v/linux/latest/build_nginx.sh   <- 现在用的是这个
 #   c/nginx_v/linux/latest/get_nginx.sh     <- 旧脚本，nginx 1.8.1（2014），原样保留不动
 # 旧 workflow 跑在 ubuntu-20.04 上：该标签在 GitHub 已下线，job 一直卡在 queued，
 # 2026-09-18 的 35380490923 / 35377913628 也都是 cancelled，所以这里换 ubuntu-24.04。
-# 1.8.1 在 Ubuntu 24.04 的 OpenSSL 3 环境下也编不过，因此走新的 build 脚本取当前 Stable。
+# 1.8.1 在 Ubuntu 24.04 的 OpenSSL 3 环境下也编不过，因此走新的 build 脚本。
+# latest 不钉版本：脚本把 download.html 上所有 tarball 版本号取最大值，
+# 2026-10-24 实测解析出的是 1.31.8（mainline 线），和钉 Stable 的
+# c/nginx_v/linux/1_30_6 一起把两条发布线都覆盖住。
 on:
   push:
     branches: ['c/nginx_v/linux/latest']
@@ -29,7 +32,7 @@ jobs:
           set -euo pipefail
           gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'c/nginx_v/linux/latest'
 
-      - name: Build nginx (auto-detected Stable) from source
+      - name: Build nginx (auto-detected latest release) from source
         working-directory: source
         shell: bash
         run: |
