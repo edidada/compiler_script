@@ -1,0 +1,34 @@
+name: build c/wireguard_v/linux/1_0_20260223
+
+# WireGuard 用户态工具 wireguard-tools v1.0.20260223（CNCF/内核态 WireGuard 的官方配套 CLI）。
+# 脚本在同名分支的源仓库里：c/wireguard_v/linux/1_0_20260223/build_wireguard.sh
+# clone 的分支写成字面量而不是 $GITHUB_REF_NAME，这样从 main 直接 workflow_dispatch 也能跑对。
+on:
+  push:
+    branches: ['c/wireguard_v/linux/1_0_20260223']
+  pull_request:
+    branches: ['c/wireguard_v/linux/1_0_20260223']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - name: Clone matching source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'c/wireguard_v/linux/1_0_20260223'
+
+      - name: Build wireguard-tools 1.0.20260223
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash 'c/wireguard_v/linux/1_0_20260223/build_wireguard.sh'
