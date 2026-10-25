@@ -1,0 +1,59 @@
+name: build c/seabios_v/linux/1_14_0
+
+on:
+  push:
+    branches:
+      - 'c/seabios_v/linux/1_14_0'
+  pull_request:
+    branches:
+      - 'c/seabios_v/linux/1_14_0'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # SeaBIOS 是 x86 legacy BIOS，构建期就依赖 GNU 工具链的 x86 ELF 目标
+    # （-m32 / LD32BIT_FLAG=-melf_i386 / layoutrom.py 读 objdump 的 ELF section），
+    # macOS runner 现在是 arm64、Windows runner 是 PE/COFF，都编不了，
+    # 所以矩阵只有 ubuntu-*。证据见源分支 c/seabios_v/linux/1_14_0/BUILD_NOTES.md。
+    # fail-fast=false：三个 Ubuntu 版本各自失败各自看，不把别的腿一起杀掉。
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-22.04
+          - ubuntu-24.04
+          - ubuntu-26.04
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Show runner toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          sed -n '1,6p' /etc/os-release
+          echo "gcc: $(gcc --version | sed -n '1p')"
+          echo "ld : $(ld --version | sed -n '1p')"
+          python3 --version
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'c/seabios_v/linux/1_14_0/get_seabios.sh'
+          './c/seabios_v/linux/1_14_0/get_seabios.sh'
+      - name: Upload built ROM images
+        uses: actions/upload-artifact@v4
+        with:
+          name: seabios-1-14-0-${{ matrix.os }}
+          path: source/_seabios_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14
