@@ -1,0 +1,77 @@
+name: build java/fdroidclient_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'java/fdroidclient_v/linux/latest'
+  pull_request:
+    branches:
+      - 'java/fdroidclient_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # F-Droid 客户端是 Gradle/AGP 工程，官方文档给的命令是 Linux/macOS 用 ./gradlew、
+    # Windows 用 gradlew.bat，三个宿主都有官方 Android SDK，所以 Linux 这条腿也铺满
+    # 三个 Ubuntu 版本。JDK 21 是上游 .gitlab-ci.yml 自己钉的（JAVA_HOME=java-21-openjdk）。
+    # 超时给到 90 分钟：Gradle 9.4.1-all 分发 + Compose/KMP 依赖是这轮里最重的一坨。
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-22.04
+          - ubuntu-24.04
+          - ubuntu-26.04
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Show runner toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          sed -n '1,6p' /etc/os-release
+          echo "uname: $(uname -s)/$(uname -m)"
+          echo "ANDROID_HOME=${ANDROID_HOME:-（镜像没设，setup-android 会补）}"
+      - name: Set up JDK 21（上游 CI 钉的版本）
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Set up Android SDK command-line tools
+        uses: android-actions/setup-android@v3
+        with:
+          # 只装 platform-tools；platforms/build-tools 交给脚本按上游 CI 的方式
+          # 从 libs.versions.toml 现读 compileSdk 再装（装不上会 WARN，由 AGP 兜底）。
+          # 不在这里写死 android-37，免得新平台没进稳定通道时整条腿硬挂。
+          packages: 'platform-tools'
+      - name: Show Android SDK state
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "ANDROID_HOME=${ANDROID_HOME:-}"
+          ls -1 "${ANDROID_HOME:-/opt/android-sdk}" || true
+          java -version 2>&1 | sed -n '1p'
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'java/fdroidclient_v/linux/latest/build_fdroidclient.sh'
+          './java/fdroidclient_v/linux/latest/build_fdroidclient.sh'
+      - name: Upload built APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: fdroidclient-${{ matrix.os }}
+          path: source/_fdroid_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14
