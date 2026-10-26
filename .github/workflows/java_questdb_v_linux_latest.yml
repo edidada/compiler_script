@@ -14,17 +14,18 @@ permissions:
 
 jobs:
   build:
-    # QuestDB（questdb/questdb）源码编译，官方入口是仓库自带 Maven wrapper：
-    # ./mvnw package -DskipTests，产物 core/target/questdb-*.jar。
+    # QuestDB（questdb/questdb）源码编译，构建入口是 mvn package -DskipTests（仓库根 pom.xml，无 mvnw）。
+    # 上游 master 固定 javac.target=25，且 java.enforce.version 只在 jdk(24,) 激活的
+    # java25+ profile 里定义——JDK <25 时 enforcer 拿到空版本直接失败，所以必须 JDK 25。
     # 首次构建要拉下一堆 maven 依赖，超时放宽到 90 分钟。
     runs-on: ubuntu-22.04
     timeout-minutes: 90
     steps:
-      - name: Set up JDK 21（编译目标 Java 17+，21 稳兼容）
+      - name: Set up JDK 25（上游 master 必须：javac.target=25 + enforcer java25+ profile）
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '21'
+          java-version: '25'
       - name: Clone matching private source branch
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
