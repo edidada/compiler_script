@@ -27,6 +27,7 @@
 | .github/workflows/c_rsync_v_linux_latest.yml | c/rsync_v/linux/latest | linux | latest | c/rsync_v/linux/latest/get_rsync.sh |
 | .github/workflows/c_sds_v_linux_latest.yml | c/sds_v/linux/latest | linux | latest | c/sds_v/linux/latest/get_sds.sh |
 | .github/workflows/c_tbox_v_linux_latest.yml | c/tbox_v/linux/latest | linux | latest | c/tbox_v/linux/latest/get_tbox.sh |
+| .github/workflows/c_tdengine_v_linux_latest.yml | c/tdengine_v/linux/latest | linux | latest | c/tdengine_v/linux/latest/get_tdengine.sh |
 | .github/workflows/c_tengine_v_linux_latest.yml | c/tengine_v/linux/latest | linux | latest | c/tengine_v/linux/latest/get_tengine.sh |
 | .github/workflows/c_ucore_v_linux_latest.yml | c/ucore_v/linux/latest | linux | latest | c/ucore_v/linux/latest/get_ucore.sh |
 | .github/workflows/c_uip_v_linux_latest.yml | c/uip_v/linux/latest | linux | latest | c/uip_v/linux/latest/get_uip.sh |
@@ -176,6 +177,7 @@
 | .github/workflows/java_poi_v_linux_latest.yml | java/poi_v/linux/latest | linux | latest | java/poi_v/linux/latest/get_poi.sh |
 | .github/workflows/java_pulsar_v_linux_latest.yml | java/pulsar_v/linux/latest | linux | latest | java/pulsar_v/linux/latest/get_pulsar.sh |
 | .github/workflows/java_quarkus_v_linux_latest.yml | java/quarkus_v/linux/latest | linux | latest | java/quarkus_v/linux/latest/get_quarkus.sh |
+| .github/workflows/java_questdb_v_linux_latest.yml | java/questdb_v/linux/latest | linux | latest | java/questdb_v/linux/latest/get_questdb.sh |
 | .github/workflows/java_rocketmq_v_linux_latest.yml | java/rocketmq_v/linux/latest | linux | latest | java/rocketmq_v/linux/latest/get_rocketmq.sh |
 | .github/workflows/java_sentinel_v_linux_latest.yml | java/sentinel_v/linux/latest | linux | latest | java/sentinel_v/linux/latest/get_sentinel.sh |
 | .github/workflows/java_shardingsphere_v_linux_latest.yml | java/shardingsphere_v/linux/latest | linux | latest | java/shardingsphere_v/linux/latest/get_shardingsphere.sh |

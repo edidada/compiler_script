@@ -1,0 +1,43 @@
+name: build c/tdengine_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'c/tdengine_v/linux/latest'
+  pull_request:
+    branches:
+      - 'c/tdengine_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # TDengine（taosdata/TDengine，C）时序数据库，官方构建入口是标准 CMake：
+    # mkdir build && cd build && cmake .. && cmake --build .，runner 自带 cmake/gcc。
+    # 超时 150 分钟：全量 C 编译含内核角色进程，比一般 c 系列重一些。
+    runs-on: ubuntu-22.04
+    timeout-minutes: 150
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'c/tdengine_v/linux/latest'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'c/tdengine_v/linux/latest/get_tdengine.sh'
+          './c/tdengine_v/linux/latest/get_tdengine.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: tdengine-ubuntu-22.04
+          path: source/_tdengine_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14
