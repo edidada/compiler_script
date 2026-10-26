@@ -156,6 +156,7 @@
 | .github/workflows/java_dubbo_v_linux_latest.yml | java/dubbo_v/linux/latest | linux | latest | java/dubbo_v/linux/latest/get_dubbo.sh |
 | .github/workflows/java_easyexcel_v_linux_latest.yml | java/easyexcel_v/linux/latest | linux | latest | java/easyexcel_v/linux/latest/get_easyexcel.sh |
 | .github/workflows/java_elasticsearch_v_linux_latest.yml | java/elasticsearch_v/linux/latest | linux | latest | java/elasticsearch_v/linux/latest/get_elasticsearch.sh |
+| .github/workflows/java_fdroidclient_v_android_latest.yml | java/fdroidclient_v/android/latest | android | latest | java/fdroidclient_v/android/latest/build_fdroidclient.sh |
 | .github/workflows/java_flink_v_linux_latest.yml | java/flink_v/linux/latest | linux | latest | java/flink_v/linux/latest/get_flink.sh |
 | .github/workflows/java_grpc_v_linux_latest.yml | java/grpc_v/linux/latest | linux | latest | java/grpc_v/linux/latest/get_java_grpc.sh |
 | .github/workflows/java_hbase_v_linux_latest.yml | java/hbase_v/linux/latest | linux | latest | java/hbase_v/linux/latest/get_hbase.sh |
@@ -199,6 +200,7 @@
 | .github/workflows/rust_rust_linux_1_80_0.yml | rust/rust/linux/1_80_0 | linux | 1_80_0 | rust/rust/linux/1_80_0/get_rust_1_80_0.sh |
 | .github/workflows/rust_rust_linux_1_91_0.yml | rust/rust/linux/1_91_0 | linux | 1_91_0 | rust/rust/linux/1_91_0/get_rust_1_91_0.sh |
 | .github/workflows/rust_servo_v_linux_latest.yml | rust/servo_v/linux/latest | linux | latest | rust/servo_v/linux/latest/get_servo.sh |
+| .github/workflows/rust_tansu_linux_latest.yml | rust/tansu/linux/latest | linux | latest | rust/tansu/linux/latest/build.sh |
 | .github/workflows/rust_tikv_v_linux_latest.yml | rust/tikv_v/linux/latest | linux | latest | rust/tikv_v/linux/latest/get_tikv.sh |
 | .github/workflows/rust_wgpu_linux_25_0_0.yml | rust/wgpu/linux/25_0_0 | linux | 25_0_0 | rust/wgpu/linux/25_0_0/get_wgpu_25_0_0.sh |
 | .github/workflows/rust_zed_v_linux_latest.yml | rust/zed_v/linux/latest | linux | latest | rust/zed_v/linux/latest/get_zed.sh |
