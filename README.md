@@ -19,6 +19,7 @@
 | .github/workflows/c_lwip_v_linux_latest.yml | c/lwip_v/linux/latest | linux | latest | c/lwip_v/linux/latest/get_lwip.sh |
 | .github/workflows/c_minigit_v_linux_latest.yml | c/minigit_v/linux/latest | linux | latest | c/minigit_v/linux/latest/get_minigit.sh |
 | .github/workflows/c_netcat_v_linux_latest.yml | c/netcat_v/linux/latest | linux | latest | c/netcat_v/linux/latest/get_netcat.sh |
+| .github/workflows/c_newlib_v_linux_latest.yml | c/newlib_v/linux/latest | linux | latest | c/newlib_v/linux/latest/get_newlib.sh |
 | .github/workflows/c_nginx_v_linux_latest.yml | c/nginx_v/linux/latest | linux | latest | c/nginx_v/linux/latest/get_nginx.sh |
 | .github/workflows/c_privoxy_v_linux_latest.yml | c/privoxy_v/linux/latest | linux | latest | c/privoxy_v/linux/latest/get_privoxy.sh |
 | .github/workflows/c_redis_v_linux_5.yml | c/redis_v/linux/5 | linux | 5 | c/redis_v/linux/5/get_redis_v5.sh |
