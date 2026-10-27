@@ -196,6 +196,7 @@
 | .github/workflows/rust_bustubx_v_linux_latest.yml | rust/bustubx_v/linux/latest | linux | latest | rust/bustubx_v/linux/latest/get_bustubx.sh |
 | .github/workflows/rust_fcp_v_linux_latest.yml | rust/fcp_v/linux/latest | linux | latest | rust/fcp_v/linux/latest/get_rust_fcp.sh |
 | .github/workflows/rust_iceberg_rust_v_linux_latest.yml | rust/iceberg_rust_v/linux/latest | linux | latest | rust/iceberg_rust_v/linux/latest/get_iceberg_rust_linux.sh |
+| .github/workflows/rust_materialize_linux_latest.yml | rust/materialize/linux/latest | linux | latest | rust/materialize/linux/latest/get_materialize.sh |
 | .github/workflows/rust_mio_linux_1_1_1.yml | rust/mio/linux/1_1_1 | linux | 1_1_1 | rust/mio/linux/1_1_1/get_mio_1_1_1_linux.sh |
 | .github/workflows/rust_pingora_v_linux_latest.yml | rust/pingora_v/linux/latest | linux | latest | rust/pingora_v/linux/latest/get_pingora_linux.sh |
 | .github/workflows/rust_rbatis_linux_4_5_33.yml | rust/rbatis/linux/4_5_33 | linux | 4_5_33 | rust/rbatis/linux/4_5_33/get_rbatis_4_5_33_linux.sh |
