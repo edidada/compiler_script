@@ -1,0 +1,43 @@
+name: build c/picolibc_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'c/picolibc_v/linux/latest'
+  pull_request:
+    branches:
+      - 'c/picolibc_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # picolibc（picolibc/picolibc，newlib 系裸机 C 库）：上游自带 meson 流程，
+    # 脚本走 scripts/do-arm-configure（cross-arm-none-eabi.txt）+ ninja + meson
+    # install，产出 arm-none-eabi 裸机 libc.a/libm.a。60 分钟足够。
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'c/picolibc_v/linux/latest'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'c/picolibc_v/linux/latest/get_picolibc.sh'
+          './c/picolibc_v/linux/latest/get_picolibc.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: picolibc-ubuntu-22.04
+          path: source/_picolibc_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14
