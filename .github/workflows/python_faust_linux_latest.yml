@@ -1,0 +1,44 @@
+name: build python/faust/linux/latest
+
+on:
+  push:
+    branches:
+      - 'python/faust/linux/latest'
+  pull_request:
+    branches:
+      - 'python/faust/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # Faust 流处理库（faust-streaming/faust）源码编译：python -m build --wheel，
+    # setup.py 默认 USE_CYTHON=True 把 faust/_cython/streams.pyx 编成 C 扩展；
+    # wheel 内必须出现 .so，另做 venv 安装 + import 冒烟。runner 自带
+    # python3.10 满足 requires-python>=3.10。超时 45 分钟。
+    runs-on: ubuntu-22.04
+    timeout-minutes: 45
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'python/faust/linux/latest'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'python/faust/linux/latest/get_faust.sh'
+          './python/faust/linux/latest/get_faust.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: faust-ubuntu-22.04
+          path: source/_faust_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14

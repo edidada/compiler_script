@@ -188,6 +188,7 @@
 | .github/workflows/java_vertx_v_linux_latest.yml | java/vertx_v/linux/latest | linux | latest | java/vertx_v/linux/latest/get_vertx.sh |
 | .github/workflows/lua_kong_v_linux_latest.yml | lua/kong_v/linux/latest | linux | latest | lua/kong_v/linux/latest/get_kong.sh |
 | .github/workflows/python_conan_v_linux_latest.yml | python/conan_v/linux/latest | linux | latest | python/conan_v/linux/latest/get_conan.sh |
+| .github/workflows/python_faust_linux_latest.yml | python/faust/linux/latest | linux | latest | python/faust/linux/latest/get_faust.sh |
 | .github/workflows/python_patroni_linux_4_0_0.yml | python/patroni/linux/4_0_0 | linux | 4_0_0 | python/patroni/linux/4_0_0/get_patroni_4_0_0.sh |
 | .github/workflows/python_pulp_linux_3_3_0.yml | python/pulp/linux/3_3_0 | linux | 3_3_0 | python/pulp/linux/3_3_0/get_python_pulp_linux_3_3_0.sh |
 | .github/workflows/python_python_v_linux_latest.yml | python/python_v/linux/latest | linux | latest | python/python_v/linux/latest/get_python.sh |
