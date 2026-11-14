@@ -153,6 +153,7 @@
 | .github/workflows/java_bazel_v_linux_latest.yml | java/bazel_v/linux/latest | linux | latest | java/bazel_v/linux/latest/get_java_bazel_linux.sh |
 | .github/workflows/java_camel_v_linux_latest.yml | java/camel_v/linux/latest | linux | latest | java/camel_v/linux/latest/get_camel.sh |
 | .github/workflows/java_dbeaver_v_linux_latest.yml | java/dbeaver_v/linux/latest | linux | latest | java/dbeaver_v/linux/latest/get_dbeaver.sh |
+| .github/workflows/java_debezium_v_linux_latest.yml | java/debezium_v/linux/latest | linux | latest | java/debezium_v/linux/latest/get_debezium.sh |
 | .github/workflows/java_derby_linux_latest.yml | java/derby/linux/latest | linux | latest | java/derby/linux/latest/get_derby_release.sh |
 | .github/workflows/java_druid_v_linux_latest.yml | java/druid_v/linux/latest | linux | latest | java/druid_v/linux/latest/get_druid.sh |
 | .github/workflows/java_dubbo_v_linux_3_1_11.yml | java/dubbo_v/linux/3_1_11 | linux | 3_1_11 | java/dubbo_v/linux/3_1_11/get_dubbo_3_1_11.sh |
