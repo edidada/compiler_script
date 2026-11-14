@@ -45,6 +45,10 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: '1.96.1'
+      - name: Set up Zig 0.16.0（ghostty-vt build.rs 硬要求）
+        uses: vercel-labs/setup-zig@v1.0.2
+        with:
+          version: '0.16.0'
       - name: Clone matching private source branch
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
