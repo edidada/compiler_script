@@ -224,6 +224,7 @@
 | .github/workflows/rust_bat_macos_latest.yml | rust/bat/macos/latest | macos | latest | rust/bat/macos/latest/get_rust.sh |
 | .github/workflows/rust_bat_windows_0_26_1.yml | rust/bat/windows/0_26_1 | windows | 0_26_1 | rust/bat/windows/0_26_1/get_rust.ps1 |
 | .github/workflows/rust_bat_windows_latest.yml | rust/bat/windows/latest | windows | latest | rust/bat/windows/latest/get_rust.ps1 |
+| .github/workflows/rust_cc_switch_v_linux_latest.yml | rust/cc_switch_v/linux/latest | linux | latest | rust/cc_switch_v/linux/latest/get_cc_switch.sh |
 | .github/workflows/rust_clap_linux_4_6_7.yml | rust/clap/linux/4_6_7 | linux | 4_6_7 | rust/clap/linux/4_6_7/get_rust.sh |
 | .github/workflows/rust_clap_linux_latest.yml | rust/clap/linux/latest | linux | latest | rust/clap/linux/latest/get_rust.sh |
 | .github/workflows/rust_clap_macos_4_6_7.yml | rust/clap/macos/4_6_7 | macos | 4_6_7 | rust/clap/macos/4_6_7/get_rust.sh |
