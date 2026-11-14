@@ -236,6 +236,7 @@
 | .github/workflows/rust_fd_macos_latest.yml | rust/fd/macos/latest | macos | latest | rust/fd/macos/latest/get_rust.sh |
 | .github/workflows/rust_fd_windows_10_5_0.yml | rust/fd/windows/10_5_0 | windows | 10_5_0 | rust/fd/windows/10_5_0/get_rust.ps1 |
 | .github/workflows/rust_fd_windows_latest.yml | rust/fd/windows/latest | windows | latest | rust/fd/windows/latest/get_rust.ps1 |
+| .github/workflows/rust_herdr_v_linux_latest.yml | rust/herdr_v/linux/latest | linux | latest | rust/herdr_v/linux/latest/get_herdr.sh |
 | .github/workflows/rust_just_linux_1_58_0.yml | rust/just/linux/1_58_0 | linux | 1_58_0 | rust/just/linux/1_58_0/get_rust.sh |
 | .github/workflows/rust_just_linux_latest.yml | rust/just/linux/latest | linux | latest | rust/just/linux/latest/get_rust.sh |
 | .github/workflows/rust_just_macos_1_58_0.yml | rust/just/macos/1_58_0 | macos | 1_58_0 | rust/just/macos/1_58_0/get_rust.sh |
