@@ -12,6 +12,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     # Debezium（debezium/debezium，CDC 平台）源码编译：上游要求 JDK 21+ /
@@ -61,7 +65,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'java/debezium_v/linux/latest/get_debezium.sh'
+          # 不用 `chmod +x --`：macOS 的 BSD chmod 不认 --，会报 "No such file or directory"。
+          chmod +x 'java/debezium_v/linux/latest/get_debezium.sh'
           './java/debezium_v/linux/latest/get_debezium.sh'
       - name: Upload built packages
         uses: actions/upload-artifact@v4
