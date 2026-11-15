@@ -1,0 +1,76 @@
+name: build rust/cc_switch_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'rust/cc_switch_v/linux/latest'
+  pull_request:
+    branches:
+      - 'rust/cc_switch_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # cc-switch（farion1231/cc-switch，Rust + Tauri 2 桌面应用）完整打包。
+    # 上游 rust-toolchain.toml=1.95 / .node-version=22.12.0 / pnpm 10.12.3；
+    # Linux 需 GTK3 + WebKit2GTK 4.1（libsoup-3.0），按 OS 打 deb/msi/dmg。
+    # 多 OS / 多 CPU 矩阵，runner 标签决定真实架构（arm64 必须显式 -arm）。
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            arch: x86_64
+          - os: ubuntu-24.04
+            arch: x86_64
+          - os: ubuntu-26.04
+            arch: x86_64
+          - os: ubuntu-24.04-arm
+            arch: arm64
+          - os: windows-latest
+            arch: x86_64
+          - os: macos-latest
+            arch: arm64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 180
+    steps:
+      - name: Set up Node 22.12.0（上游 .node-version）
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.12.0'
+      - name: Set up Rust 1.95（上游 rust-toolchain.toml）
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.95'
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Windows runner 默认 core.autocrlf=true 会把 .sh 转成 CRLF 让 bash 报错
+          git config --global core.autocrlf false
+          git config --global core.longpaths true
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'rust/cc_switch_v/linux/latest'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          # 不用 `chmod +x --`：macOS 的 BSD chmod 不认 --
+          chmod +x 'rust/cc_switch_v/linux/latest/get_cc_switch.sh'
+          './rust/cc_switch_v/linux/latest/get_cc_switch.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: cc-switch-${{ matrix.os }}-${{ matrix.arch }}
+          path: source/_cc_switch_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14
