@@ -1,0 +1,41 @@
+name: build cpp/clickhouse/linux
+
+on:
+  push:
+    branches:
+      - 'cpp/clickhouse/linux'
+  pull_request:
+    branches:
+      - 'cpp/clickhouse/linux'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'cpp/clickhouse/linux'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          d='cpp/clickhouse/linux'
+          if [ -d "$d" ]; then
+            script=$(find "$d" -name '*.sh' -type f | sort | head -1)
+          else
+            script=$(find . -maxdepth 5 -name '*.sh' -type f | sort | head -1)
+          fi
+          echo "selected script: $script"
+          test -n "$script"
+          chmod +x "$script"
+          "./$script"
