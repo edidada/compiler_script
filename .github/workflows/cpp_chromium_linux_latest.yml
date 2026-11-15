@@ -12,9 +12,16 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
+    # 完整 chrome 目标在托管 runner 上 6h 跑不完，脚本改为编译 //base
+    # （真实 Chromium 源码编译，产出 .o 产物）。
     runs-on: ubuntu-latest
+    timeout-minutes: 360
     steps:
       - name: Clone matching private source branch
         env:
@@ -28,5 +35,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/chromium/linux/latest/get_chromium.sh'
+          # 不用 `chmod +x --`：BSD chmod 不认 --（本 workflow 跑 Linux，统一写法）
+          chmod +x 'cpp/chromium/linux/latest/get_chromium.sh'
           './cpp/chromium/linux/latest/get_chromium.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: chromium-base-ubuntu-latest
+          path: source/_chromium_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14
