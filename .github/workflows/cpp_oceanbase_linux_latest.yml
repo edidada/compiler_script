@@ -22,6 +22,10 @@ jobs:
     # runs-on: [self-hosted, linux, x64, ob]
     runs-on: ubuntu-26.04
     timeout-minutes: 360
+    env:
+      # 托管 runner 只有 16 GB 内存 + 3 GB swap；OceanBase 链接阶段单进程
+      # 可达 8~12 GB，补 16 GB swap 才能避免 OOM Killer。
+      CREATE_SWAP_GB: '16'
     steps:
       - name: Show runner resources
         shell: bash
@@ -46,5 +50,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          chmod +x -- 'cpp/oceanbase/linux/latest/get_oceanbase_latest_linux.sh'
+          chmod +x 'cpp/oceanbase/linux/latest/get_oceanbase_latest_linux.sh'
           './cpp/oceanbase/linux/latest/get_oceanbase_latest_linux.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: oceanbase-ubuntu-26.04
+          path: source/_oceanbase_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14
