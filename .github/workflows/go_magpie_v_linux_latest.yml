@@ -1,0 +1,72 @@
+name: build go/magpie_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'go/magpie_v/linux/latest'
+  pull_request:
+    branches:
+      - 'go/magpie_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # magpie（yetone/magpie，Go + Wails v3 桌面网关）GUI 打包。
+    # 上游 go.mod 要求 Go 1.26.8；Linux 走 Wails v3 的 GTK3/WebKitGTK 4.1
+    # 路径（-tags gtk3），Windows 走 WebView2（CGO_ENABLED=0），macOS 走 WKWebView。
+    # 多 OS / 多 CPU 矩阵，runner 标签决定真实架构（arm64 必须显式 -arm）。
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            arch: x86_64
+          - os: ubuntu-24.04
+            arch: x86_64
+          - os: ubuntu-26.04
+            arch: x86_64
+          - os: ubuntu-24.04-arm
+            arch: arm64
+          - os: windows-latest
+            arch: x86_64
+          - os: macos-latest
+            arch: arm64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 180
+    steps:
+      - name: Set up Go 1.26.8（上游 go.mod）
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.26.8'
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Windows runner 默认 core.autocrlf=true 会把 .sh 转成 CRLF 让 bash 报错
+          git config --global core.autocrlf false
+          git config --global core.longpaths true
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'go/magpie_v/linux/latest'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          # 不用 `chmod +x --`：macOS 的 BSD chmod 不认 --
+          chmod +x 'go/magpie_v/linux/latest/get_magpie.sh'
+          './go/magpie_v/linux/latest/get_magpie.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: magpie-${{ matrix.os }}-${{ matrix.arch }}
+          path: source/_magpie_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14

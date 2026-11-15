@@ -142,6 +142,7 @@
 | .github/workflows/go_frp_v_linux_latest.yml | go/frp_v/linux/latest | linux | latest | go/frp_v/linux/latest/get_frp.sh |
 | .github/workflows/go_go_linux_1_24_13.yml | go/go/linux/1_24_13 | linux | 1_24_13 | go/go/linux/1_24_13/get_go_1_24_13_linux.sh |
 | .github/workflows/go_k8s_v_linux_latest.yml | go/k8s_v/linux/latest | linux | latest | go/k8s_v/linux/latest/get_k8s.sh |
+| .github/workflows/go_magpie_v_linux_latest.yml | go/magpie_v/linux/latest | linux | latest | go/magpie_v/linux/latest/get_magpie.sh |
 | .github/workflows/go_minio_linux_2025_09_07.yml | go/minio/linux/2025_09_07 | linux | 2025_09_07 | go/minio/linux/2025_09_07/get_minio_2025_09_07.sh |
 | .github/workflows/go_moby_v_linux_latest.yml | go/moby_v/linux/latest | linux | latest | go/moby_v/linux/latest/get_moby.sh |
 | .github/workflows/go_podman_linux_5_8_0.yml | go/podman/linux/5_8_0 | linux | 5_8_0 | go/podman/linux/5_8_0/get_podman_linux_5_8_0.sh |
@@ -153,6 +154,7 @@
 | .github/workflows/java_bazel_v_linux_latest.yml | java/bazel_v/linux/latest | linux | latest | java/bazel_v/linux/latest/get_java_bazel_linux.sh |
 | .github/workflows/java_camel_v_linux_latest.yml | java/camel_v/linux/latest | linux | latest | java/camel_v/linux/latest/get_camel.sh |
 | .github/workflows/java_dbeaver_v_linux_latest.yml | java/dbeaver_v/linux/latest | linux | latest | java/dbeaver_v/linux/latest/get_dbeaver.sh |
+| .github/workflows/java_debezium_v_linux_latest.yml | java/debezium_v/linux/latest | linux | latest | java/debezium_v/linux/latest/get_debezium.sh |
 | .github/workflows/java_derby_linux_latest.yml | java/derby/linux/latest | linux | latest | java/derby/linux/latest/get_derby_release.sh |
 | .github/workflows/java_druid_v_linux_latest.yml | java/druid_v/linux/latest | linux | latest | java/druid_v/linux/latest/get_druid.sh |
 | .github/workflows/java_dubbo_v_linux_3_1_11.yml | java/dubbo_v/linux/3_1_11 | linux | 3_1_11 | java/dubbo_v/linux/3_1_11/get_dubbo_3_1_11.sh |

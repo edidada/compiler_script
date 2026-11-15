@@ -1,0 +1,77 @@
+name: build java/debezium_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'java/debezium_v/linux/latest'
+  pull_request:
+    branches:
+      - 'java/debezium_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # Debezium（debezium/debezium，CDC 平台）源码编译：上游要求 JDK 21+ /
+    # Maven 3.9.8+（用仓库自带 ./mvnw），-Dquick 跳过测试与 QA 插件，不需要 Docker。
+    # 多 OS / 多 CPU 矩阵：ubuntu 22/24/26（x86_64）、ubuntu-24.04-arm（arm64）、
+    # windows-latest（windows-2025-vs2026，x86_64）、macos-latest（macos-26-arm64）。
+    # runner 标签决定真实架构：arm64 必须显式写 -arm 标签，matrix 里自定义 arch
+    # 只是字符串（见 ai_agent_scripts/git/github/github_action.txt）。
+    # fail-fast=false：每条腿各自失败各自看，不把别的腿一起杀掉。
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            arch: x86_64
+          - os: ubuntu-24.04
+            arch: x86_64
+          - os: ubuntu-26.04
+            arch: x86_64
+          - os: ubuntu-24.04-arm
+            arch: arm64
+          - os: windows-latest
+            arch: x86_64
+          - os: macos-latest
+            arch: arm64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 180
+    steps:
+      - name: Set up JDK 21（上游 debezium.java.source=21）
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Windows runner 默认 core.autocrlf=true 会把 .sh / mvnw 转成 CRLF 让 bash 报错；
+          # 长路径也是 Maven 深层 target 目录的常见坑。
+          git config --global core.autocrlf false
+          git config --global core.longpaths true
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'java/debezium_v/linux/latest'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          # 不用 `chmod +x --`：macOS 的 BSD chmod 不认 --，会报 "No such file or directory"。
+          chmod +x 'java/debezium_v/linux/latest/get_debezium.sh'
+          './java/debezium_v/linux/latest/get_debezium.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: debezium-${{ matrix.os }}-${{ matrix.arch }}
+          path: source/_debezium_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14
