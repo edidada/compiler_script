@@ -21,6 +21,7 @@
 | .github/workflows/c_netcat_v_linux_latest.yml | c/netcat_v/linux/latest | linux | latest | c/netcat_v/linux/latest/get_netcat.sh |
 | .github/workflows/c_newlib_v_linux_latest.yml | c/newlib_v/linux/latest | linux | latest | c/newlib_v/linux/latest/get_newlib.sh |
 | .github/workflows/c_nginx_v_linux_latest.yml | c/nginx_v/linux/latest | linux | latest | c/nginx_v/linux/latest/get_nginx.sh |
+| .github/workflows/c_picolibc_v_linux_latest.yml | c/picolibc_v/linux/latest | linux | latest | c/picolibc_v/linux/latest/get_picolibc.sh |
 | .github/workflows/c_privoxy_v_linux_latest.yml | c/privoxy_v/linux/latest | linux | latest | c/privoxy_v/linux/latest/get_privoxy.sh |
 | .github/workflows/c_redis_v_linux_5.yml | c/redis_v/linux/5 | linux | 5 | c/redis_v/linux/5/get_redis_v5.sh |
 | .github/workflows/c_redis_v_linux_6.yml | c/redis_v/linux/6 | linux | 6 | c/redis_v/linux/6/get_redis_v6.sh |
