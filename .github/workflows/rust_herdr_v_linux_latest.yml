@@ -1,0 +1,76 @@
+name: build rust/herdr_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'rust/herdr_v/linux/latest'
+  pull_request:
+    branches:
+      - 'rust/herdr_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # herdr（herdrdev/herdr，Rust 单二进制 TUI 终端复用器）release 构建。
+    # 上游 README：cargo build --release；rust-toolchain.toml=1.96.1。
+    # herdr 自称 "one rust binary, no electron"，release 二进制即完整产物。
+    # 多 OS / 多 CPU 矩阵，runner 标签决定真实架构（arm64 必须显式 -arm）。
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            arch: x86_64
+          - os: ubuntu-24.04
+            arch: x86_64
+          - os: ubuntu-26.04
+            arch: x86_64
+          - os: ubuntu-24.04-arm
+            arch: arm64
+          - os: windows-latest
+            arch: x86_64
+          - os: macos-latest
+            arch: arm64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 180
+    steps:
+      - name: Set up Rust 1.96.1（上游 rust-toolchain.toml）
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.96.1'
+      - name: Set up Zig 0.16.0（ghostty-vt build.rs 硬要求）
+        uses: vercel-labs/setup-zig@v1.0.2
+        with:
+          version: '0.16.0'
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Windows runner 默认 core.autocrlf=true 会把 .sh 转成 CRLF 让 bash 报错
+          git config --global core.autocrlf false
+          git config --global core.longpaths true
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'rust/herdr_v/linux/latest'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          # 不用 `chmod +x --`：macOS 的 BSD chmod 不认 --
+          chmod +x 'rust/herdr_v/linux/latest/get_herdr.sh'
+          './rust/herdr_v/linux/latest/get_herdr.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: herdr-${{ matrix.os }}-${{ matrix.arch }}
+          path: source/_herdr_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14
