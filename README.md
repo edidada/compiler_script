@@ -19,6 +19,7 @@
 | .github/workflows/c_lwip_v_linux_latest.yml | c/lwip_v/linux/latest | linux | latest | c/lwip_v/linux/latest/get_lwip.sh |
 | .github/workflows/c_minigit_v_linux_latest.yml | c/minigit_v/linux/latest | linux | latest | c/minigit_v/linux/latest/get_minigit.sh |
 | .github/workflows/c_netcat_v_linux_latest.yml | c/netcat_v/linux/latest | linux | latest | c/netcat_v/linux/latest/get_netcat.sh |
+| .github/workflows/c_newlib_v_linux_latest.yml | c/newlib_v/linux/latest | linux | latest | c/newlib_v/linux/latest/get_newlib.sh |
 | .github/workflows/c_nginx_v_linux_latest.yml | c/nginx_v/linux/latest | linux | latest | c/nginx_v/linux/latest/get_nginx.sh |
 | .github/workflows/c_privoxy_v_linux_latest.yml | c/privoxy_v/linux/latest | linux | latest | c/privoxy_v/linux/latest/get_privoxy.sh |
 | .github/workflows/c_redis_v_linux_5.yml | c/redis_v/linux/5 | linux | 5 | c/redis_v/linux/5/get_redis_v5.sh |
@@ -27,6 +28,7 @@
 | .github/workflows/c_rsync_v_linux_latest.yml | c/rsync_v/linux/latest | linux | latest | c/rsync_v/linux/latest/get_rsync.sh |
 | .github/workflows/c_sds_v_linux_latest.yml | c/sds_v/linux/latest | linux | latest | c/sds_v/linux/latest/get_sds.sh |
 | .github/workflows/c_tbox_v_linux_latest.yml | c/tbox_v/linux/latest | linux | latest | c/tbox_v/linux/latest/get_tbox.sh |
+| .github/workflows/c_tdengine_v_linux_latest.yml | c/tdengine_v/linux/latest | linux | latest | c/tdengine_v/linux/latest/get_tdengine.sh |
 | .github/workflows/c_tengine_v_linux_latest.yml | c/tengine_v/linux/latest | linux | latest | c/tengine_v/linux/latest/get_tengine.sh |
 | .github/workflows/c_ucore_v_linux_latest.yml | c/ucore_v/linux/latest | linux | latest | c/ucore_v/linux/latest/get_ucore.sh |
 | .github/workflows/c_uip_v_linux_latest.yml | c/uip_v/linux/latest | linux | latest | c/uip_v/linux/latest/get_uip.sh |
@@ -156,6 +158,7 @@
 | .github/workflows/java_dubbo_v_linux_latest.yml | java/dubbo_v/linux/latest | linux | latest | java/dubbo_v/linux/latest/get_dubbo.sh |
 | .github/workflows/java_easyexcel_v_linux_latest.yml | java/easyexcel_v/linux/latest | linux | latest | java/easyexcel_v/linux/latest/get_easyexcel.sh |
 | .github/workflows/java_elasticsearch_v_linux_latest.yml | java/elasticsearch_v/linux/latest | linux | latest | java/elasticsearch_v/linux/latest/get_elasticsearch.sh |
+| .github/workflows/java_fdroidclient_v_android_latest.yml | java/fdroidclient_v/android/latest | android | latest | java/fdroidclient_v/android/latest/build_fdroidclient.sh |
 | .github/workflows/java_flink_v_linux_latest.yml | java/flink_v/linux/latest | linux | latest | java/flink_v/linux/latest/get_flink.sh |
 | .github/workflows/java_grpc_v_linux_latest.yml | java/grpc_v/linux/latest | linux | latest | java/grpc_v/linux/latest/get_java_grpc.sh |
 | .github/workflows/java_hbase_v_linux_latest.yml | java/hbase_v/linux/latest | linux | latest | java/hbase_v/linux/latest/get_hbase.sh |
@@ -175,6 +178,7 @@
 | .github/workflows/java_poi_v_linux_latest.yml | java/poi_v/linux/latest | linux | latest | java/poi_v/linux/latest/get_poi.sh |
 | .github/workflows/java_pulsar_v_linux_latest.yml | java/pulsar_v/linux/latest | linux | latest | java/pulsar_v/linux/latest/get_pulsar.sh |
 | .github/workflows/java_quarkus_v_linux_latest.yml | java/quarkus_v/linux/latest | linux | latest | java/quarkus_v/linux/latest/get_quarkus.sh |
+| .github/workflows/java_questdb_v_linux_latest.yml | java/questdb_v/linux/latest | linux | latest | java/questdb_v/linux/latest/get_questdb.sh |
 | .github/workflows/java_rocketmq_v_linux_latest.yml | java/rocketmq_v/linux/latest | linux | latest | java/rocketmq_v/linux/latest/get_rocketmq.sh |
 | .github/workflows/java_sentinel_v_linux_latest.yml | java/sentinel_v/linux/latest | linux | latest | java/sentinel_v/linux/latest/get_sentinel.sh |
 | .github/workflows/java_shardingsphere_v_linux_latest.yml | java/shardingsphere_v/linux/latest | linux | latest | java/shardingsphere_v/linux/latest/get_shardingsphere.sh |
@@ -185,6 +189,7 @@
 | .github/workflows/java_vertx_v_linux_latest.yml | java/vertx_v/linux/latest | linux | latest | java/vertx_v/linux/latest/get_vertx.sh |
 | .github/workflows/lua_kong_v_linux_latest.yml | lua/kong_v/linux/latest | linux | latest | lua/kong_v/linux/latest/get_kong.sh |
 | .github/workflows/python_conan_v_linux_latest.yml | python/conan_v/linux/latest | linux | latest | python/conan_v/linux/latest/get_conan.sh |
+| .github/workflows/python_faust_linux_latest.yml | python/faust/linux/latest | linux | latest | python/faust/linux/latest/get_faust.sh |
 | .github/workflows/python_patroni_linux_4_0_0.yml | python/patroni/linux/4_0_0 | linux | 4_0_0 | python/patroni/linux/4_0_0/get_patroni_4_0_0.sh |
 | .github/workflows/python_pulp_linux_3_3_0.yml | python/pulp/linux/3_3_0 | linux | 3_3_0 | python/pulp/linux/3_3_0/get_python_pulp_linux_3_3_0.sh |
 | .github/workflows/python_python_v_linux_latest.yml | python/python_v/linux/latest | linux | latest | python/python_v/linux/latest/get_python.sh |
@@ -193,12 +198,14 @@
 | .github/workflows/rust_bustubx_v_linux_latest.yml | rust/bustubx_v/linux/latest | linux | latest | rust/bustubx_v/linux/latest/get_bustubx.sh |
 | .github/workflows/rust_fcp_v_linux_latest.yml | rust/fcp_v/linux/latest | linux | latest | rust/fcp_v/linux/latest/get_rust_fcp.sh |
 | .github/workflows/rust_iceberg_rust_v_linux_latest.yml | rust/iceberg_rust_v/linux/latest | linux | latest | rust/iceberg_rust_v/linux/latest/get_iceberg_rust_linux.sh |
+| .github/workflows/rust_materialize_linux_latest.yml | rust/materialize/linux/latest | linux | latest | rust/materialize/linux/latest/get_materialize.sh |
 | .github/workflows/rust_mio_linux_1_1_1.yml | rust/mio/linux/1_1_1 | linux | 1_1_1 | rust/mio/linux/1_1_1/get_mio_1_1_1_linux.sh |
 | .github/workflows/rust_pingora_v_linux_latest.yml | rust/pingora_v/linux/latest | linux | latest | rust/pingora_v/linux/latest/get_pingora_linux.sh |
 | .github/workflows/rust_rbatis_linux_4_5_33.yml | rust/rbatis/linux/4_5_33 | linux | 4_5_33 | rust/rbatis/linux/4_5_33/get_rbatis_4_5_33_linux.sh |
 | .github/workflows/rust_rust_linux_1_80_0.yml | rust/rust/linux/1_80_0 | linux | 1_80_0 | rust/rust/linux/1_80_0/get_rust_1_80_0.sh |
 | .github/workflows/rust_rust_linux_1_91_0.yml | rust/rust/linux/1_91_0 | linux | 1_91_0 | rust/rust/linux/1_91_0/get_rust_1_91_0.sh |
 | .github/workflows/rust_servo_v_linux_latest.yml | rust/servo_v/linux/latest | linux | latest | rust/servo_v/linux/latest/get_servo.sh |
+| .github/workflows/rust_tansu_linux_latest.yml | rust/tansu/linux/latest | linux | latest | rust/tansu/linux/latest/build.sh |
 | .github/workflows/rust_tikv_v_linux_latest.yml | rust/tikv_v/linux/latest | linux | latest | rust/tikv_v/linux/latest/get_tikv.sh |
 | .github/workflows/rust_wgpu_linux_25_0_0.yml | rust/wgpu/linux/25_0_0 | linux | 25_0_0 | rust/wgpu/linux/25_0_0/get_wgpu_25_0_0.sh |
 | .github/workflows/rust_zed_v_linux_latest.yml | rust/zed_v/linux/latest | linux | latest | rust/zed_v/linux/latest/get_zed.sh |

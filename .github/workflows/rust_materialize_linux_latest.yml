@@ -1,0 +1,52 @@
+name: build rust/materialize/linux/latest
+
+on:
+  push:
+    branches:
+      - 'rust/materialize/linux/latest'
+  pull_request:
+    branches:
+      - 'rust/materialize/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # Materialize（MaterializeInc/materialize，Rust 流式数据库）源码编译：
+    # cargo build --release -p mz-environmentd（含 environmentd/clusterd）。
+    # 上游 release profile 是 thin-LTO，全量编译很重——超时给到 360 分钟上限，
+    # 并先清磁盘（bonus 预装包）给 cargo target 空间。
+    runs-on: ubuntu-22.04
+    timeout-minutes: 360
+    steps:
+      - name: Free disk space（thin-LTO 全量编译产物大）
+        shell: bash
+        run: |
+          set -euo pipefail
+          df -h /
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghc 2>/dev/null || true
+          sudo rm -rf /opt/hostedtoolcache/CodeQL 2>/dev/null || true
+          df -h /
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'rust/materialize/linux/latest'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'rust/materialize/linux/latest/get_materialize.sh'
+          './rust/materialize/linux/latest/get_materialize.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: materialize-ubuntu-22.04
+          path: source/_materialize_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14

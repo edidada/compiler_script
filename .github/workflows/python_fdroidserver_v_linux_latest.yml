@@ -1,0 +1,58 @@
+name: build python/fdroidserver_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'python/fdroidserver_v/linux/latest'
+  pull_request:
+    branches:
+      - 'python/fdroidserver_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # fdroidserver 是纯 Python 包，上游自己的 CI 全跑在 Debian 容器里，classifiers 只写
+    # POSIX / MacOS X / Unix（没 Windows），所以这条系列铺 ubuntu 三个版本，
+    # 顺带把上游声明的 python_requires>=3.9 在 3.10/3.12/3.1x 上各验一遍。
+    # fail-fast=false：某个 Ubuntu 版本的依赖装不动，不影响另两条腿出结论。
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-22.04
+          - ubuntu-24.04
+          - ubuntu-26.04
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Show runner toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          sed -n '1,6p' /etc/os-release
+          echo "python3: $(python3 --version)"
+          echo "pip: $(python3 -m pip --version)"
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch "$GITHUB_REF_NAME"
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'python/fdroidserver_v/linux/latest/build_fdroidserver.sh'
+          './python/fdroidserver_v/linux/latest/build_fdroidserver.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: fdroidserver-${{ matrix.os }}
+          path: source/_fdroid_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14

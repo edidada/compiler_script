@@ -1,0 +1,43 @@
+name: build c/newlib_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'c/newlib_v/linux/latest'
+  pull_request:
+    branches:
+      - 'c/newlib_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # Newlib（sourceware，裸机 C 库）：官方发布 tarball（自带生成的 configure）
+    # + apt gcc-arm-none-eabi 交叉工具链，configure --target=arm-none-eabi
+    # 编出裸机 libc.a/libm.a。为下载源码 + 交叉编译留 60 分钟。
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'c/newlib_v/linux/latest'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x -- 'c/newlib_v/linux/latest/get_newlib.sh'
+          './c/newlib_v/linux/latest/get_newlib.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: newlib-ubuntu-22.04
+          path: source/_newlib_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14
