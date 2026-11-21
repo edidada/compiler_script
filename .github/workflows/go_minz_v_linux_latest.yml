@@ -40,6 +40,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 120
     steps:
+      - name: Set up Go（上游 go.mod 要求 go 1.24 / toolchain go1.24.3）
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.3'
       - name: Clone matching private source branch
         env:
           GH_TOKEN: ${{ secrets.COMPILER_PAT }}
