@@ -1,0 +1,62 @@
+name: build c/cowgol_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'c/cowgol_v/linux/latest'
+  pull_request:
+    branches:
+      - 'c/cowgol_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # Cowgol（davidgiven/cowgol）：自举的极小目标编译器，编译器本身用 Cowgol 写成。
+    # 上游明确 Unixish/Linux-only（依赖 Lua 5.1 / flex / bison / libz80ex / 交叉 binutils）。
+    # 故矩阵只留 Ubuntu 系 4 腿。端到端：apt 依赖 → make 自举（bootstrap→ncgen→nncgen，config.py 按可用工具裁剪后端）
+    # → 运行 nncgen 自举编译器编出的 helloworld（纯 C 后端，无需交叉工具）。
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            arch: x86_64
+          - os: ubuntu-24.04
+            arch: x86_64
+          - os: ubuntu-26.04
+            arch: x86_64
+          - os: ubuntu-24.04-arm
+            arch: arm64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 180
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config --global core.autocrlf false
+          git config --global core.longpaths true
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'c/cowgol_v/linux/latest'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x 'c/cowgol_v/linux/latest/get_cowgol.sh'
+          './c/cowgol_v/linux/latest/get_cowgol.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: cowgol-${{ matrix.os }}-${{ matrix.arch }}
+          path: source/_cowgol_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14
