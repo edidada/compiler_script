@@ -8,12 +8,14 @@
 | --- | --- | --- | --- | --- |
 | .github/workflows/as_nasm_v_linux_latest.yml | as/nasm_v/linux/latest | linux | latest | as/nasm_v/linux/latest/get_nasm.sh |
 | .github/workflows/c_coreutils_v_linux_latest.yml | c/coreutils_v/linux/latest | linux | latest | c/coreutils_v/linux/latest/get_coreutils.sh |
+| .github/workflows/c_cowgol_v_linux_latest.yml | c/cowgol_v/linux/latest | linux | latest | c/cowgol_v/linux/latest/get_cowgol.sh |
 | .github/workflows/c_fastdfs_v_linux_6_08.yml | c/fastdfs_v/linux/6_08 | linux | 6_08 | c/fastdfs_v/linux/6_08/get_fastdfs.sh |
 | .github/workflows/c_fastdfs_v_linux_latest.yml | c/fastdfs_v/linux/latest | linux | latest | c/fastdfs_v/linux/latest/get_fastdfs.sh |
 | .github/workflows/c_ffmpeg_v_linux_8_0_0.yml | c/ffmpeg_v/linux/8_0_0 | linux | 8_0_0 | c/ffmpeg_v/linux/8_0_0/get_ffmpeg8.sh |
 | .github/workflows/c_ffmpeg_v_linux_latest.yml | c/ffmpeg_v/linux/latest | linux | latest | c/ffmpeg_v/linux/latest/get_ffmpeg.sh |
 | .github/workflows/c_flex_linux_2_6_5.yml | c/flex/linux/2_6_5 | linux | 2_6_5 | c/flex/linux/2_6_5/get_flex_2_6_5.sh |
 | .github/workflows/c_glibc_v_linux_latest.yml | c/glibc_v/linux/latest | linux | latest | c/glibc_v/linux/latest/get_glibc.sh |
+| .github/workflows/c_janet_v_linux_latest.yml | c/janet_v/linux/latest | linux | latest | c/janet_v/linux/latest/get_janet.sh |
 | .github/workflows/c_logcabin_linux_1_1_0.yml | c/logcabin/linux/1_1_0 | linux | 1_1_0 | c/logcabin/linux/1_1_0/get_logcabin.sh |
 | .github/workflows/c_lwip_v_linux_2_2_0.yml | c/lwip_v/linux/2_2_0 | linux | 2_2_0 | c/lwip_v/linux/2_2_0/get_lwip.sh |
 | .github/workflows/c_lwip_v_linux_latest.yml | c/lwip_v/linux/latest | linux | latest | c/lwip_v/linux/latest/get_lwip.sh |
@@ -144,6 +146,7 @@
 | .github/workflows/go_k8s_v_linux_latest.yml | go/k8s_v/linux/latest | linux | latest | go/k8s_v/linux/latest/get_k8s.sh |
 | .github/workflows/go_magpie_v_linux_latest.yml | go/magpie_v/linux/latest | linux | latest | go/magpie_v/linux/latest/get_magpie.sh |
 | .github/workflows/go_minio_linux_2025_09_07.yml | go/minio/linux/2025_09_07 | linux | 2025_09_07 | go/minio/linux/2025_09_07/get_minio_2025_09_07.sh |
+| .github/workflows/go_minz_v_linux_latest.yml | go/minz_v/linux/latest | linux | latest | go/minz_v/linux/latest/get_minz.sh |
 | .github/workflows/go_moby_v_linux_latest.yml | go/moby_v/linux/latest | linux | latest | go/moby_v/linux/latest/get_moby.sh |
 | .github/workflows/go_podman_linux_5_8_0.yml | go/podman/linux/5_8_0 | linux | 5_8_0 | go/podman/linux/5_8_0/get_podman_linux_5_8_0.sh |
 | .github/workflows/go_syncthing_v_linux_latest.yml | go/syncthing_v/linux/latest | linux | latest | go/syncthing_v/linux/latest/get_syncthing.sh |
@@ -205,6 +208,7 @@
 | .github/workflows/rust_mio_linux_1_1_1.yml | rust/mio/linux/1_1_1 | linux | 1_1_1 | rust/mio/linux/1_1_1/get_mio_1_1_1_linux.sh |
 | .github/workflows/rust_pingora_v_linux_latest.yml | rust/pingora_v/linux/latest | linux | latest | rust/pingora_v/linux/latest/get_pingora_linux.sh |
 | .github/workflows/rust_rbatis_linux_4_5_33.yml | rust/rbatis/linux/4_5_33 | linux | 4_5_33 | rust/rbatis/linux/4_5_33/get_rbatis_4_5_33_linux.sh |
+| .github/workflows/rust_rue_v_linux_latest.yml | rust/rue_v/linux/latest | linux | latest | rust/rue_v/linux/latest/get_rue.sh |
 | .github/workflows/rust_rust_linux_1_80_0.yml | rust/rust/linux/1_80_0 | linux | 1_80_0 | rust/rust/linux/1_80_0/get_rust_1_80_0.sh |
 | .github/workflows/rust_rust_linux_1_91_0.yml | rust/rust/linux/1_91_0 | linux | 1_91_0 | rust/rust/linux/1_91_0/get_rust_1_91_0.sh |
 | .github/workflows/rust_servo_v_linux_latest.yml | rust/servo_v/linux/latest | linux | latest | rust/servo_v/linux/latest/get_servo.sh |
