@@ -1,0 +1,63 @@
+name: build rust/rue_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'rust/rue_v/linux/latest'
+  pull_request:
+    branches:
+      - 'rust/rue_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # Rue（rue-language/rue）：Rust 实现的实验性系统语言，Buck2 + DotSlash 构建。
+    # 生成目标仅支持 x86-64-linux / aarch64-linux / aarch64-macos，故不含 Windows 腿。
+    # 端到端：安装 dotslash → buck2 编出 Rue 编译器 → 用编译器把 welcome.rue 编成原生可执行并运行（输出 1 2 3 42，退出 0）。
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            arch: x86_64
+          - os: ubuntu-24.04
+            arch: x86_64
+          - os: ubuntu-26.04
+            arch: x86_64
+          - os: ubuntu-24.04-arm
+            arch: arm64
+          - os: macos-latest
+            arch: arm64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 300
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config --global core.autocrlf false
+          git config --global core.longpaths true
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'rust/rue_v/linux/latest'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x 'rust/rue_v/linux/latest/get_rue.sh'
+          './rust/rue_v/linux/latest/get_rue.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: rue-${{ matrix.os }}-${{ matrix.arch }}
+          path: source/_rue_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14
