@@ -1,0 +1,68 @@
+name: build c/janet_v/linux/latest
+
+on:
+  push:
+    branches:
+      - 'c/janet_v/linux/latest'
+  pull_request:
+    branches:
+      - 'c/janet_v/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # Janet（janet-lang/janet）：C 实现的动态语言，自带自举（bootstrap 解释器生成 amalgamation）。
+    # POSIX：GNU make 自举构建 + make test；Windows：MSVC build_win.bat 构建 + test。
+    # 端到端：编出 janet 解释器 + libjanet，并运行一段宏（defmacro）代码验证自举与宏都可用。
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            arch: x86_64
+          - os: ubuntu-24.04
+            arch: x86_64
+          - os: ubuntu-26.04
+            arch: x86_64
+          - os: ubuntu-24.04-arm
+            arch: arm64
+          - os: windows-latest
+            arch: x86_64
+          - os: macos-latest
+            arch: arm64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 120
+    steps:
+      - name: Set up MSVC (Windows)
+        if: runner.os == 'Windows'
+        uses: ilammy/msvc-dev-cmd@v1
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config --global core.autocrlf false
+          git config --global core.longpaths true
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'c/janet_v/linux/latest'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x 'c/janet_v/linux/latest/get_janet.sh'
+          './c/janet_v/linux/latest/get_janet.sh'
+      - name: Upload built packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: janet-${{ matrix.os }}-${{ matrix.arch }}
+          path: source/_janet_build/artifacts/*
+          if-no-files-found: error
+          retention-days: 14
