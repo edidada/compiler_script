@@ -217,6 +217,7 @@
 | .github/workflows/python_python_v_linux_latest.yml | python/python_v/linux/latest | linux | latest | python/python_v/linux/latest/get_python.sh |
 | .github/workflows/python_pytorch_v_linux_latest.yml | python/pytorch_v/linux/latest | linux | latest | python/pytorch_v/linux/latest/get_python_pytorch_linux.sh |
 | .github/workflows/python_selenium_v_linux_latest.yml | python/selenium_v/linux/latest | linux | latest | python/selenium_v/linux/latest/get_selenium.sh |
+| .github/workflows/rust_anolisa_linux_latest.yml | rust/anolisa/linux/latest | linux | latest | rust/anolisa/linux/latest/get_anolisa.sh |
 | .github/workflows/rust_axum_linux_0_8_9.yml | rust/axum/linux/0_8_9 | linux | 0_8_9 | rust/axum/linux/0_8_9/get_rust.sh |
 | .github/workflows/rust_axum_linux_latest.yml | rust/axum/linux/latest | linux | latest | rust/axum/linux/latest/get_rust.sh |
 | .github/workflows/rust_axum_macos_0_8_9.yml | rust/axum/macos/0_8_9 | macos | 0_8_9 | rust/axum/macos/0_8_9/get_rust.sh |
@@ -302,6 +303,7 @@
 | .github/workflows/scala_spark_linux_3_4_0.yml | scala/spark/linux/3_4_0 | linux | 3_4_0 | scala/spark/linux/3_4_0/get_spark.sh |
 | .github/workflows/ts_opencode_linux_1_2_27.yml | ts/opencode/linux/1_2_27 | linux | 1_2_27 | ts/opencode/linux/1_2_27/get_opencode_1_2_27.sh |
 | .github/workflows/zig_zap_linux_0_11_0.yml | zig/zap/linux/0_11_0 | linux | 0_11_0 | zig/zap/linux/0_11_0/get_zap_0_11_0.sh |
+| .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
