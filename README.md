@@ -212,6 +212,7 @@
 | .github/workflows/python_areno_linux_latest.yml | python/areno/linux/latest | linux | latest | python/areno/linux/latest/get_areno.sh |
 | .github/workflows/python_conan_v_linux_latest.yml | python/conan_v/linux/latest | linux | latest | python/conan_v/linux/latest/get_conan.sh |
 | .github/workflows/python_faust_linux_latest.yml | python/faust/linux/latest | linux | latest | python/faust/linux/latest/get_faust.sh |
+| .github/workflows/python_lookout_linux_latest.yml | python/lookout/linux/latest | linux | latest | python/lookout/linux/latest/get_lookout.sh |
 | .github/workflows/python_patroni_linux_4_0_0.yml | python/patroni/linux/4_0_0 | linux | 4_0_0 | python/patroni/linux/4_0_0/get_patroni_4_0_0.sh |
 | .github/workflows/python_pulp_linux_3_3_0.yml | python/pulp/linux/3_3_0 | linux | 3_3_0 | python/pulp/linux/3_3_0/get_python_pulp_linux_3_3_0.sh |
 | .github/workflows/python_python_v_linux_latest.yml | python/python_v/linux/latest | linux | latest | python/python_v/linux/latest/get_python.sh |
@@ -302,6 +303,7 @@
 | .github/workflows/scala_spark_linux_3_4_0.yml | scala/spark/linux/3_4_0 | linux | 3_4_0 | scala/spark/linux/3_4_0/get_spark.sh |
 | .github/workflows/ts_opencode_linux_1_2_27.yml | ts/opencode/linux/1_2_27 | linux | 1_2_27 | ts/opencode/linux/1_2_27/get_opencode_1_2_27.sh |
 | .github/workflows/zig_zap_linux_0_11_0.yml | zig/zap/linux/0_11_0 | linux | 0_11_0 | zig/zap/linux/0_11_0/get_zap_0_11_0.sh |
+| .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
