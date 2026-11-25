@@ -37,6 +37,7 @@
 | .github/workflows/c_ucore_v_linux_latest.yml | c/ucore_v/linux/latest | linux | latest | c/ucore_v/linux/latest/get_ucore.sh |
 | .github/workflows/c_uip_v_linux_latest.yml | c/uip_v/linux/latest | linux | latest | c/uip_v/linux/latest/get_uip.sh |
 | .github/workflows/c_valkey_v_linux_latest.yml | c/valkey_v/linux/latest | linux | latest | c/valkey_v/linux/latest/get_valkey.sh |
+| .github/workflows/c_volclava_linux_latest.yml | c/volclava/linux/latest | linux | latest | c/volclava/linux/latest/get_volclava.sh |
 | .github/workflows/c_wrk_linux_latest.yml | c/wrk/linux/latest | linux | latest | c/wrk/linux/latest/get_wrk.sh |
 | .github/workflows/c_xv6_linux_latest.yml | c/xv6/linux/latest | linux | latest | c/xv6/linux/latest/get_xv6.sh |
 | .github/workflows/cpp_3fs_v_linux_latest.yml | cpp/3fs_v/linux/latest | linux | latest | cpp/3fs_v/linux/latest/get_3fs_linux24.sh |
@@ -305,6 +306,7 @@
 | .github/workflows/scala_spark_linux_3_4_0.yml | scala/spark/linux/3_4_0 | linux | 3_4_0 | scala/spark/linux/3_4_0/get_spark.sh |
 | .github/workflows/ts_opencode_linux_1_2_27.yml | ts/opencode/linux/1_2_27 | linux | 1_2_27 | ts/opencode/linux/1_2_27/get_opencode_1_2_27.sh |
 | .github/workflows/zig_zap_linux_0_11_0.yml | zig/zap/linux/0_11_0 | linux | 0_11_0 | zig/zap/linux/0_11_0/get_zap_0_11_0.sh |
+| .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
