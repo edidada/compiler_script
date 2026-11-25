@@ -152,6 +152,7 @@
 | .github/workflows/go_go_linux_1_24_13.yml | go/go/linux/1_24_13 | linux | 1_24_13 | go/go/linux/1_24_13/get_go_1_24_13_linux.sh |
 | .github/workflows/go_k8s_v_linux_latest.yml | go/k8s_v/linux/latest | linux | latest | go/k8s_v/linux/latest/get_k8s.sh |
 | .github/workflows/go_kata_dan_cni_linux_latest.yml | go/kata_dan_cni/linux/latest | linux | latest | go/kata_dan_cni/linux/latest/get_kata_dan_cni.sh |
+| .github/workflows/go_kwdb_linux_latest.yml | go/kwdb/linux/latest | linux | latest | go/kwdb/linux/latest/get_kwdb.sh |
 | .github/workflows/go_magpie_v_linux_latest.yml | go/magpie_v/linux/latest | linux | latest | go/magpie_v/linux/latest/get_magpie.sh |
 | .github/workflows/go_minio_linux_2025_09_07.yml | go/minio/linux/2025_09_07 | linux | 2025_09_07 | go/minio/linux/2025_09_07/get_minio_2025_09_07.sh |
 | .github/workflows/go_minz_v_linux_latest.yml | go/minz_v/linux/latest | linux | latest | go/minz_v/linux/latest/get_minz.sh |
@@ -306,6 +307,7 @@
 | .github/workflows/scala_spark_linux_3_4_0.yml | scala/spark/linux/3_4_0 | linux | 3_4_0 | scala/spark/linux/3_4_0/get_spark.sh |
 | .github/workflows/ts_opencode_linux_1_2_27.yml | ts/opencode/linux/1_2_27 | linux | 1_2_27 | ts/opencode/linux/1_2_27/get_opencode_1_2_27.sh |
 | .github/workflows/zig_zap_linux_0_11_0.yml | zig/zap/linux/0_11_0 | linux | 0_11_0 | zig/zap/linux/0_11_0/get_zap_0_11_0.sh |
+| .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
