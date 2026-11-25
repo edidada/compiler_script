@@ -145,6 +145,7 @@
 | .github/workflows/go_frp_v_linux_latest.yml | go/frp_v/linux/latest | linux | latest | go/frp_v/linux/latest/get_frp.sh |
 | .github/workflows/go_go_linux_1_24_13.yml | go/go/linux/1_24_13 | linux | 1_24_13 | go/go/linux/1_24_13/get_go_1_24_13_linux.sh |
 | .github/workflows/go_k8s_v_linux_latest.yml | go/k8s_v/linux/latest | linux | latest | go/k8s_v/linux/latest/get_k8s.sh |
+| .github/workflows/go_kata_dan_cni_linux_latest.yml | go/kata_dan_cni/linux/latest | linux | latest | go/kata_dan_cni/linux/latest/get_kata_dan_cni.sh |
 | .github/workflows/go_magpie_v_linux_latest.yml | go/magpie_v/linux/latest | linux | latest | go/magpie_v/linux/latest/get_magpie.sh |
 | .github/workflows/go_minio_linux_2025_09_07.yml | go/minio/linux/2025_09_07 | linux | 2025_09_07 | go/minio/linux/2025_09_07/get_minio_2025_09_07.sh |
 | .github/workflows/go_minz_v_linux_latest.yml | go/minz_v/linux/latest | linux | latest | go/minz_v/linux/latest/get_minz.sh |
