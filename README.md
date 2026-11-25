@@ -137,6 +137,7 @@
 | .github/workflows/cpp_tinylsm_v_linux_latest.yml | cpp/tinylsm_v/linux/latest | linux | latest | cpp/tinylsm_v/linux/latest/get_tinylsm_linux.sh |
 | .github/workflows/cpp_tinyrpc_v_linux_latest.yml | cpp/tinyrpc_v/linux/latest | linux | latest | cpp/tinyrpc_v/linux/latest/get_tinyrpc.sh |
 | .github/workflows/cpp_trojan_v_linux_latest.yml | cpp/trojan_v/linux/latest | linux | latest | cpp/trojan_v/linux/latest/get_trojan.sh |
+| .github/workflows/cpp_vsag_linux_latest.yml | cpp/vsag/linux/latest | linux | latest | cpp/vsag/linux/latest/get_vsag.sh |
 | .github/workflows/cpp_webkit_v_linux_latest.yml | cpp/webkit_v/linux/latest | linux | latest | cpp/webkit_v/linux/latest/get_webkit.sh |
 | .github/workflows/cpp_xlnt_v_linux_latest.yml | cpp/xlnt_v/linux/latest | linux | latest | cpp/xlnt_v/linux/latest/get_xlnt.sh |
 | .github/workflows/cpp_xlnt_v_macos_latest.yml | cpp/xlnt_v/macos/latest | macos | latest | cpp/xlnt_v/macos/latest/get_xlnt_mac.sh |
