@@ -200,6 +200,7 @@
 | .github/workflows/java_tomcat_v_linux_9.yml | java/tomcat_v/linux/9 | linux | 9 | java/tomcat_v/linux/9/get_tomcat.sh<br>java/tomcat_v/linux/9/get_tomcat9.sh |
 | .github/workflows/java_vertx_v_linux_latest.yml | java/vertx_v/linux/latest | linux | latest | java/vertx_v/linux/latest/get_vertx.sh |
 | .github/workflows/lua_kong_v_linux_latest.yml | lua/kong_v/linux/latest | linux | latest | lua/kong_v/linux/latest/get_kong.sh |
+| .github/workflows/python_apache_hugegraph_ai_linux_latest.yml | python/apache_hugegraph_ai/linux/latest | linux | latest | python/apache_hugegraph_ai/linux/latest/get_apache_hugegraph_ai.sh |
 | .github/workflows/python_conan_v_linux_latest.yml | python/conan_v/linux/latest | linux | latest | python/conan_v/linux/latest/get_conan.sh |
 | .github/workflows/python_faust_linux_latest.yml | python/faust/linux/latest | linux | latest | python/faust/linux/latest/get_faust.sh |
 | .github/workflows/python_patroni_linux_4_0_0.yml | python/patroni/linux/4_0_0 | linux | 4_0_0 | python/patroni/linux/4_0_0/get_patroni_4_0_0.sh |
