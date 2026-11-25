@@ -144,6 +144,9 @@
 | .github/workflows/cpp_yespon_yazi_v_linux_latest.yml | cpp/yespon_yazi_v/linux/latest | linux | latest | cpp/yespon_yazi_v/linux/latest/get_yespon_yazi.sh |
 | .github/workflows/cpp_yolov5s_v_android_latest.yml | cpp/yolov5s_v/android/latest | android | latest | cpp/yolov5s_v/android/latest/get_yolov5s_android.sh |
 | .github/workflows/csharp_garnet_v_linux_latest.yml | csharp/garnet_v/linux/latest | linux | latest | csharp/garnet_v/linux/latest/get_garnet.sh |
+| .github/workflows/go_abaci_bot_linux_latest.yml | go/abaci_bot/linux/latest | linux | latest | go/abaci_bot/linux/latest/get_abaci_bot.sh |
+| .github/workflows/go_dragonfly_client_linux_latest.yml | go/dragonfly_client/linux/latest | linux | latest | go/dragonfly_client/linux/latest/get_dragonfly_client.sh |
+| .github/workflows/go_dubbo_go_linux_latest.yml | go/dubbo_go/linux/latest | linux | latest | go/dubbo_go/linux/latest/get_dubbo_go.sh |
 | .github/workflows/go_excelize_linux_latest.yml | go/excelize/linux/latest | linux | latest | go/excelize/linux/latest/get_excelize.sh |
 | .github/workflows/go_frp_v_linux_latest.yml | go/frp_v/linux/latest | linux | latest | go/frp_v/linux/latest/get_frp.sh |
 | .github/workflows/go_go_linux_1_24_13.yml | go/go/linux/1_24_13 | linux | 1_24_13 | go/go/linux/1_24_13/get_go_1_24_13_linux.sh |
@@ -153,9 +156,12 @@
 | .github/workflows/go_minio_linux_2025_09_07.yml | go/minio/linux/2025_09_07 | linux | 2025_09_07 | go/minio/linux/2025_09_07/get_minio_2025_09_07.sh |
 | .github/workflows/go_minz_v_linux_latest.yml | go/minz_v/linux/latest | linux | latest | go/minz_v/linux/latest/get_minz.sh |
 | .github/workflows/go_moby_v_linux_latest.yml | go/moby_v/linux/latest | linux | latest | go/moby_v/linux/latest/get_moby.sh |
+| .github/workflows/go_open_code_review_linux_latest.yml | go/open_code_review/linux/latest | linux | latest | go/open_code_review/linux/latest/get_open_code_review.sh |
 | .github/workflows/go_openruyi_linux_latest.yml | go/openruyi/linux/latest | linux | latest | go/openruyi/linux/latest/get_openruyi.sh |
+| .github/workflows/go_pixiu_linux_latest.yml | go/pixiu/linux/latest | linux | latest | go/pixiu/linux/latest/get_pixiu.sh |
 | .github/workflows/go_podman_linux_5_8_0.yml | go/podman/linux/5_8_0 | linux | 5_8_0 | go/podman/linux/5_8_0/get_podman_linux_5_8_0.sh |
 | .github/workflows/go_seata_go_linux_latest.yml | go/seata_go/linux/latest | linux | latest | go/seata_go/linux/latest/get_seata_go.sh |
+| .github/workflows/go_sedna_linux_latest.yml | go/sedna/linux/latest | linux | latest | go/sedna/linux/latest/get_sedna.sh |
 | .github/workflows/go_syncthing_v_linux_latest.yml | go/syncthing_v/linux/latest | linux | latest | go/syncthing_v/linux/latest/get_syncthing.sh |
 | .github/workflows/go_tinysql_v_linux_latest.yml | go/tinysql_v/linux/latest | linux | latest | go/tinysql_v/linux/latest/get_tinysql_linux.sh |
 | .github/workflows/go_vmvcc_v_linux_latest.yml | go/vmvcc_v/linux/latest | linux | latest | go/vmvcc_v/linux/latest/get_vmvcc.sh |
@@ -203,6 +209,7 @@
 | .github/workflows/java_vertx_v_linux_latest.yml | java/vertx_v/linux/latest | linux | latest | java/vertx_v/linux/latest/get_vertx.sh |
 | .github/workflows/lua_kong_v_linux_latest.yml | lua/kong_v/linux/latest | linux | latest | lua/kong_v/linux/latest/get_kong.sh |
 | .github/workflows/python_apache_hugegraph_ai_linux_latest.yml | python/apache_hugegraph_ai/linux/latest | linux | latest | python/apache_hugegraph_ai/linux/latest/get_apache_hugegraph_ai.sh |
+| .github/workflows/python_areno_linux_latest.yml | python/areno/linux/latest | linux | latest | python/areno/linux/latest/get_areno.sh |
 | .github/workflows/python_conan_v_linux_latest.yml | python/conan_v/linux/latest | linux | latest | python/conan_v/linux/latest/get_conan.sh |
 | .github/workflows/python_faust_linux_latest.yml | python/faust/linux/latest | linux | latest | python/faust/linux/latest/get_faust.sh |
 | .github/workflows/python_patroni_linux_4_0_0.yml | python/patroni/linux/4_0_0 | linux | 4_0_0 | python/patroni/linux/4_0_0/get_patroni_4_0_0.sh |
@@ -248,6 +255,7 @@
 | .github/workflows/rust_just_windows_latest.yml | rust/just/windows/latest | windows | latest | rust/just/windows/latest/get_rust.ps1 |
 | .github/workflows/rust_materialize_linux_latest.yml | rust/materialize/linux/latest | linux | latest | rust/materialize/linux/latest/get_materialize.sh |
 | .github/workflows/rust_mio_linux_1_1_1.yml | rust/mio/linux/1_1_1 | linux | 1_1_1 | rust/mio/linux/1_1_1/get_mio_1_1_1_linux.sh |
+| .github/workflows/rust_nydus_linux_latest.yml | rust/nydus/linux/latest | linux | latest | rust/nydus/linux/latest/get_nydus.sh |
 | .github/workflows/rust_pingora_v_linux_latest.yml | rust/pingora_v/linux/latest | linux | latest | rust/pingora_v/linux/latest/get_pingora_linux.sh |
 | .github/workflows/rust_rayon_linux_1_12_0.yml | rust/rayon/linux/1_12_0 | linux | 1_12_0 | rust/rayon/linux/1_12_0/get_rust.sh |
 | .github/workflows/rust_rayon_linux_latest.yml | rust/rayon/linux/latest | linux | latest | rust/rayon/linux/latest/get_rust.sh |
@@ -294,5 +302,6 @@
 | .github/workflows/scala_spark_linux_3_4_0.yml | scala/spark/linux/3_4_0 | linux | 3_4_0 | scala/spark/linux/3_4_0/get_spark.sh |
 | .github/workflows/ts_opencode_linux_1_2_27.yml | ts/opencode/linux/1_2_27 | linux | 1_2_27 | ts/opencode/linux/1_2_27/get_opencode_1_2_27.sh |
 | .github/workflows/zig_zap_linux_0_11_0.yml | zig/zap/linux/0_11_0 | linux | 0_11_0 | zig/zap/linux/0_11_0/get_zap_0_11_0.sh |
+| .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
