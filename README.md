@@ -166,6 +166,7 @@
 | .github/workflows/go_tinysql_v_linux_latest.yml | go/tinysql_v/linux/latest | linux | latest | go/tinysql_v/linux/latest/get_tinysql_linux.sh |
 | .github/workflows/go_vmvcc_v_linux_latest.yml | go/vmvcc_v/linux/latest | linux | latest | go/vmvcc_v/linux/latest/get_vmvcc.sh |
 | .github/workflows/java_antlr_v_linux_latest.yml | java/antlr_v/linux/latest | linux | latest | java/antlr_v/linux/latest/get_java_antlr_linux.sh |
+| .github/workflows/java_apache_hugegraph_toolchain_linux_latest.yml | java/apache_hugegraph_toolchain/linux/latest | linux | latest | java/apache_hugegraph_toolchain/linux/latest/get_apache_hugegraph_toolchain.sh |
 | .github/workflows/java_bazel_v_linux_7.yml | java/bazel_v/linux/7 | linux | 7 | java/bazel_v/linux/7/get_java_bazel7_linux.sh |
 | .github/workflows/java_bazel_v_linux_latest.yml | java/bazel_v/linux/latest | linux | latest | java/bazel_v/linux/latest/get_java_bazel_linux.sh |
 | .github/workflows/java_camel_v_linux_latest.yml | java/camel_v/linux/latest | linux | latest | java/camel_v/linux/latest/get_camel.sh |
@@ -302,6 +303,7 @@
 | .github/workflows/scala_spark_linux_3_4_0.yml | scala/spark/linux/3_4_0 | linux | 3_4_0 | scala/spark/linux/3_4_0/get_spark.sh |
 | .github/workflows/ts_opencode_linux_1_2_27.yml | ts/opencode/linux/1_2_27 | linux | 1_2_27 | ts/opencode/linux/1_2_27/get_opencode_1_2_27.sh |
 | .github/workflows/zig_zap_linux_0_11_0.yml | zig/zap/linux/0_11_0 | linux | 0_11_0 | zig/zap/linux/0_11_0/get_zap_0_11_0.sh |
+| .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
