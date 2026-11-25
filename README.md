@@ -43,6 +43,7 @@
 | .github/workflows/cpp_asio_v_linux_latest.yml | cpp/asio_v/linux/latest | linux | latest | cpp/asio_v/linux/latest/get_asio.sh |
 | .github/workflows/cpp_benchmark_linux_1_9_4.yml | cpp/benchmark/linux/1_9_4 | linux | 1_9_4 | cpp/benchmark/linux/1_9_4/get_benchmark_linux_1_9_4.sh |
 | .github/workflows/cpp_boost_v_linux_latest.yml | cpp/boost_v/linux/latest | linux | latest | cpp/boost_v/linux/latest/get_boost.sh |
+| .github/workflows/cpp_box64_linux_latest.yml | cpp/box64/linux/latest | linux | latest | cpp/box64/linux/latest/get_box64.sh |
 | .github/workflows/cpp_brpc_linux_0_9_7.yml | cpp/brpc/linux/0_9_7 | linux | 0_9_7 | cpp/brpc/linux/0_9_7/get_brpc_0_9_7.sh |
 | .github/workflows/cpp_brpc_linux_1_10_0.yml | cpp/brpc/linux/1_10_0 | linux | 1_10_0 | cpp/brpc/linux/1_10_0/get_brpc_1_10_0.sh |
 | .github/workflows/cpp_brpc_linux_1_13_0.yml | cpp/brpc/linux/1_13_0 | linux | 1_13_0 | cpp/brpc/linux/1_13_0/get_brpc_1_13_0.sh |
