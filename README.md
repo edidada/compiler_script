@@ -202,6 +202,7 @@
 | .github/workflows/java_sa_token_linux_latest.yml | java/sa_token/linux/latest | linux | latest | java/sa_token/linux/latest/get_sa_token.sh |
 | .github/workflows/java_sentinel_v_linux_latest.yml | java/sentinel_v/linux/latest | linux | latest | java/sentinel_v/linux/latest/get_sentinel.sh |
 | .github/workflows/java_shardingsphere_v_linux_latest.yml | java/shardingsphere_v/linux/latest | linux | latest | java/shardingsphere_v/linux/latest/get_shardingsphere.sh |
+| .github/workflows/java_skillhub_linux_latest.yml | java/skillhub/linux/latest | linux | latest | java/skillhub/linux/latest/get_skillhub.sh |
 | .github/workflows/java_sootup_linux_1_3_0.yml | java/sootup/linux/1_3_0 | linux | 1_3_0 | java/sootup/linux/1_3_0/get_sootup.sh |
 | .github/workflows/java_stringtemplate_v_linux_4.yml | java/stringtemplate_v/linux/4 | linux | 4 | java/stringtemplate_v/linux/4/get_java_stringtemplate4_linux.sh |
 | .github/workflows/java_thingsboard_v_linux_latest.yml | java/thingsboard_v/linux/latest | linux | latest | java/thingsboard_v/linux/latest/get_thingsboard.sh |
@@ -302,6 +303,7 @@
 | .github/workflows/scala_spark_linux_3_4_0.yml | scala/spark/linux/3_4_0 | linux | 3_4_0 | scala/spark/linux/3_4_0/get_spark.sh |
 | .github/workflows/ts_opencode_linux_1_2_27.yml | ts/opencode/linux/1_2_27 | linux | 1_2_27 | ts/opencode/linux/1_2_27/get_opencode_1_2_27.sh |
 | .github/workflows/zig_zap_linux_0_11_0.yml | zig/zap/linux/0_11_0 | linux | 0_11_0 | zig/zap/linux/0_11_0/get_zap_0_11_0.sh |
+| .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
