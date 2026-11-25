@@ -9,6 +9,7 @@
 | .github/workflows/as_nasm_v_linux_latest.yml | as/nasm_v/linux/latest | linux | latest | as/nasm_v/linux/latest/get_nasm.sh |
 | .github/workflows/c_coreutils_v_linux_latest.yml | c/coreutils_v/linux/latest | linux | latest | c/coreutils_v/linux/latest/get_coreutils.sh |
 | .github/workflows/c_cowgol_v_linux_latest.yml | c/cowgol_v/linux/latest | linux | latest | c/cowgol_v/linux/latest/get_cowgol.sh |
+| .github/workflows/c_erofs_utils_linux_latest.yml | c/erofs_utils/linux/latest | linux | latest | c/erofs_utils/linux/latest/get_erofs_utils.sh |
 | .github/workflows/c_fastdfs_v_linux_6_08.yml | c/fastdfs_v/linux/6_08 | linux | 6_08 | c/fastdfs_v/linux/6_08/get_fastdfs.sh |
 | .github/workflows/c_fastdfs_v_linux_latest.yml | c/fastdfs_v/linux/latest | linux | latest | c/fastdfs_v/linux/latest/get_fastdfs.sh |
 | .github/workflows/c_ffmpeg_v_linux_8_0_0.yml | c/ffmpeg_v/linux/8_0_0 | linux | 8_0_0 | c/ffmpeg_v/linux/8_0_0/get_ffmpeg8.sh |
