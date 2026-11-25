@@ -152,6 +152,7 @@
 | .github/workflows/go_minz_v_linux_latest.yml | go/minz_v/linux/latest | linux | latest | go/minz_v/linux/latest/get_minz.sh |
 | .github/workflows/go_moby_v_linux_latest.yml | go/moby_v/linux/latest | linux | latest | go/moby_v/linux/latest/get_moby.sh |
 | .github/workflows/go_podman_linux_5_8_0.yml | go/podman/linux/5_8_0 | linux | 5_8_0 | go/podman/linux/5_8_0/get_podman_linux_5_8_0.sh |
+| .github/workflows/go_seata_go_linux_latest.yml | go/seata_go/linux/latest | linux | latest | go/seata_go/linux/latest/get_seata_go.sh |
 | .github/workflows/go_syncthing_v_linux_latest.yml | go/syncthing_v/linux/latest | linux | latest | go/syncthing_v/linux/latest/get_syncthing.sh |
 | .github/workflows/go_tinysql_v_linux_latest.yml | go/tinysql_v/linux/latest | linux | latest | go/tinysql_v/linux/latest/get_tinysql_linux.sh |
 | .github/workflows/go_vmvcc_v_linux_latest.yml | go/vmvcc_v/linux/latest | linux | latest | go/vmvcc_v/linux/latest/get_vmvcc.sh |
