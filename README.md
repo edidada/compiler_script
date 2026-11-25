@@ -203,6 +203,7 @@
 | .github/workflows/java_sa_token_linux_latest.yml | java/sa_token/linux/latest | linux | latest | java/sa_token/linux/latest/get_sa_token.sh |
 | .github/workflows/java_sentinel_v_linux_latest.yml | java/sentinel_v/linux/latest | linux | latest | java/sentinel_v/linux/latest/get_sentinel.sh |
 | .github/workflows/java_shardingsphere_v_linux_latest.yml | java/shardingsphere_v/linux/latest | linux | latest | java/shardingsphere_v/linux/latest/get_shardingsphere.sh |
+| .github/workflows/java_skillhub_linux_latest.yml | java/skillhub/linux/latest | linux | latest | java/skillhub/linux/latest/get_skillhub.sh |
 | .github/workflows/java_sootup_linux_1_3_0.yml | java/sootup/linux/1_3_0 | linux | 1_3_0 | java/sootup/linux/1_3_0/get_sootup.sh |
 | .github/workflows/java_stringtemplate_v_linux_4.yml | java/stringtemplate_v/linux/4 | linux | 4 | java/stringtemplate_v/linux/4/get_java_stringtemplate4_linux.sh |
 | .github/workflows/java_thingsboard_v_linux_latest.yml | java/thingsboard_v/linux/latest | linux | latest | java/thingsboard_v/linux/latest/get_thingsboard.sh |
