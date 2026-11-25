@@ -125,6 +125,7 @@
 | .github/workflows/cpp_re2_linux_2024_05_01.yml | cpp/re2/linux/2024_05_01 | linux | 2024_05_01 | cpp/re2/linux/2024_05_01/cpp_re2_linux_2024_05_01.sh |
 | .github/workflows/cpp_rest_rpc_v_linux_latest.yml | cpp/rest_rpc_v/linux/latest | linux | latest | cpp/rest_rpc_v/linux/latest/get_rest_rpc.sh |
 | .github/workflows/cpp_rocksdb_v_linux_latest.yml | cpp/rocksdb_v/linux/latest | linux | latest | cpp/rocksdb_v/linux/latest/get_rocksdb.sh |
+| .github/workflows/cpp_rvclaw_linux_latest.yml | cpp/rvclaw/linux/latest | linux | latest | cpp/rvclaw/linux/latest/get_rvclaw.sh |
 | .github/workflows/cpp_skia_v_linux_latest.yml | cpp/skia_v/linux/latest | linux | latest | cpp/skia_v/linux/latest/get_skia.sh |
 | .github/workflows/cpp_sqlpp11_v_linux_latest.yml | cpp/sqlpp11_v/linux/latest | linux | latest | cpp/sqlpp11_v/linux/latest/get_sqlpp11_linux.sh |
 | .github/workflows/cpp_squid_v_linux_latest.yml | cpp/squid_v/linux/latest | linux | latest | cpp/squid_v/linux/latest/get_squid_linux.sh |
@@ -305,6 +306,7 @@
 | .github/workflows/scala_spark_linux_3_4_0.yml | scala/spark/linux/3_4_0 | linux | 3_4_0 | scala/spark/linux/3_4_0/get_spark.sh |
 | .github/workflows/ts_opencode_linux_1_2_27.yml | ts/opencode/linux/1_2_27 | linux | 1_2_27 | ts/opencode/linux/1_2_27/get_opencode_1_2_27.sh |
 | .github/workflows/zig_zap_linux_0_11_0.yml | zig/zap/linux/0_11_0 | linux | 0_11_0 | zig/zap/linux/0_11_0/get_zap_0_11_0.sh |
+| .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
