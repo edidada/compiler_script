@@ -188,6 +188,7 @@
 | .github/workflows/java_quarkus_v_linux_latest.yml | java/quarkus_v/linux/latest | linux | latest | java/quarkus_v/linux/latest/get_quarkus.sh |
 | .github/workflows/java_questdb_v_linux_latest.yml | java/questdb_v/linux/latest | linux | latest | java/questdb_v/linux/latest/get_questdb.sh |
 | .github/workflows/java_rocketmq_v_linux_latest.yml | java/rocketmq_v/linux/latest | linux | latest | java/rocketmq_v/linux/latest/get_rocketmq.sh |
+| .github/workflows/java_sa_token_linux_latest.yml | java/sa_token/linux/latest | linux | latest | java/sa_token/linux/latest/get_sa_token.sh |
 | .github/workflows/java_sentinel_v_linux_latest.yml | java/sentinel_v/linux/latest | linux | latest | java/sentinel_v/linux/latest/get_sentinel.sh |
 | .github/workflows/java_shardingsphere_v_linux_latest.yml | java/shardingsphere_v/linux/latest | linux | latest | java/shardingsphere_v/linux/latest/get_shardingsphere.sh |
 | .github/workflows/java_sootup_linux_1_3_0.yml | java/sootup/linux/1_3_0 | linux | 1_3_0 | java/sootup/linux/1_3_0/get_sootup.sh |
