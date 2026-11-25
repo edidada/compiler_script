@@ -162,6 +162,7 @@
 | .github/workflows/go_podman_linux_5_8_0.yml | go/podman/linux/5_8_0 | linux | 5_8_0 | go/podman/linux/5_8_0/get_podman_linux_5_8_0.sh |
 | .github/workflows/go_seata_go_linux_latest.yml | go/seata_go/linux/latest | linux | latest | go/seata_go/linux/latest/get_seata_go.sh |
 | .github/workflows/go_sedna_linux_latest.yml | go/sedna/linux/latest | linux | latest | go/sedna/linux/latest/get_sedna.sh |
+| .github/workflows/go_semantic_router_linux_latest.yml | go/semantic_router/linux/latest | linux | latest | go/semantic_router/linux/latest/get_semantic_router.sh |
 | .github/workflows/go_syncthing_v_linux_latest.yml | go/syncthing_v/linux/latest | linux | latest | go/syncthing_v/linux/latest/get_syncthing.sh |
 | .github/workflows/go_tinysql_v_linux_latest.yml | go/tinysql_v/linux/latest | linux | latest | go/tinysql_v/linux/latest/get_tinysql_linux.sh |
 | .github/workflows/go_vmvcc_v_linux_latest.yml | go/vmvcc_v/linux/latest | linux | latest | go/vmvcc_v/linux/latest/get_vmvcc.sh |
@@ -302,6 +303,7 @@
 | .github/workflows/scala_spark_linux_3_4_0.yml | scala/spark/linux/3_4_0 | linux | 3_4_0 | scala/spark/linux/3_4_0/get_spark.sh |
 | .github/workflows/ts_opencode_linux_1_2_27.yml | ts/opencode/linux/1_2_27 | linux | 1_2_27 | ts/opencode/linux/1_2_27/get_opencode_1_2_27.sh |
 | .github/workflows/zig_zap_linux_0_11_0.yml | zig/zap/linux/0_11_0 | linux | 0_11_0 | zig/zap/linux/0_11_0/get_zap_0_11_0.sh |
+| .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
