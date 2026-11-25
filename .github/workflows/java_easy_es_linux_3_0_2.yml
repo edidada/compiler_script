@@ -1,0 +1,39 @@
+name: build java/easy_es/linux/3_0_2
+
+on:
+  push:
+    branches:
+      - 'java/easy_es/linux/3_0_2'
+  pull_request:
+    branches:
+      - 'java/easy_es/linux/3_0_2'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config --global core.autocrlf false
+          git config --global core.longpaths true
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'java/easy_es/linux/3_0_2'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x 'java/easy_es/linux/3_0_2/get_easy_es.sh'
+          './java/easy_es/linux/3_0_2/get_easy_es.sh'

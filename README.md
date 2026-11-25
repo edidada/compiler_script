@@ -175,6 +175,7 @@
 | .github/workflows/java_druid_v_linux_latest.yml | java/druid_v/linux/latest | linux | latest | java/druid_v/linux/latest/get_druid.sh |
 | .github/workflows/java_dubbo_v_linux_3_1_11.yml | java/dubbo_v/linux/3_1_11 | linux | 3_1_11 | java/dubbo_v/linux/3_1_11/get_dubbo_3_1_11.sh |
 | .github/workflows/java_dubbo_v_linux_latest.yml | java/dubbo_v/linux/latest | linux | latest | java/dubbo_v/linux/latest/get_dubbo.sh |
+| .github/workflows/java_easy_es_linux_3_0_2.yml | java/easy_es/linux/3_0_2 | linux | latest | java/easy_es/linux/3_0_2/get_easy_es.sh |
 | .github/workflows/java_easyexcel_v_linux_latest.yml | java/easyexcel_v/linux/latest | linux | latest | java/easyexcel_v/linux/latest/get_easyexcel.sh |
 | .github/workflows/java_elasticsearch_v_linux_latest.yml | java/elasticsearch_v/linux/latest | linux | latest | java/elasticsearch_v/linux/latest/get_elasticsearch.sh |
 | .github/workflows/java_fdroidclient_v_android_latest.yml | java/fdroidclient_v/android/latest | android | latest | java/fdroidclient_v/android/latest/build_fdroidclient.sh |
@@ -302,6 +303,7 @@
 | .github/workflows/scala_spark_linux_3_4_0.yml | scala/spark/linux/3_4_0 | linux | 3_4_0 | scala/spark/linux/3_4_0/get_spark.sh |
 | .github/workflows/ts_opencode_linux_1_2_27.yml | ts/opencode/linux/1_2_27 | linux | 1_2_27 | ts/opencode/linux/1_2_27/get_opencode_1_2_27.sh |
 | .github/workflows/zig_zap_linux_0_11_0.yml | zig/zap/linux/0_11_0 | linux | 0_11_0 | zig/zap/linux/0_11_0/get_zap_0_11_0.sh |
+| .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
