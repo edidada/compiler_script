@@ -311,3 +311,4 @@
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
 | .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
+| .github/workflows/zig_zig_linux_0_15_2.yml | zig/zig/linux/0_15_2 | linux | 0_15_2 | zig/zig/linux/0_15_2/get_zig_0_15_2.sh |
