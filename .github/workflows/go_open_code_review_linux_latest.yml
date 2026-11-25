@@ -1,0 +1,39 @@
+name: build go/open_code_review/linux/latest
+
+on:
+  push:
+    branches:
+      - 'go/open_code_review/linux/latest'
+  pull_request:
+    branches:
+      - 'go/open_code_review/linux/latest'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - name: Clone matching private source branch
+        env:
+          GH_TOKEN: ${{ secrets.COMPILER_PAT }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config --global core.autocrlf false
+          git config --global core.longpaths true
+          gh repo clone "$GITHUB_REPOSITORY_OWNER/github_codespaces_compile" source -- --depth=1 --single-branch --branch 'go/open_code_review/linux/latest'
+      - name: Execute source script
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x 'go/open_code_review/linux/latest/get_open_code_review.sh'
+          './go/open_code_review/linux/latest/get_open_code_review.sh'
